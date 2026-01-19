@@ -2,6 +2,7 @@ import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link as ScrollLink } from "react-scroll";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import heroImage from "@assets/stock_images/bright_professional__472cb7a3.jpg";
 
 export function Hero() {
   return (
@@ -70,13 +71,12 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/20 border-4 border-white"
             >
-              {/* scales of justice legal concept */}
               <img 
-                src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=1200" 
+                src={heroImage} 
                 alt="Legal Services" 
                 className="w-full h-auto object-cover aspect-[4/3]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent mix-blend-multiply" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent mix-blend-multiply" />
             </motion.div>
             
             {/* Floating Badge */}
