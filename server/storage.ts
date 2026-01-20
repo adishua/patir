@@ -50,7 +50,7 @@ export class DatabaseStorage implements IStorage {
           icon: "Gavel",
         },
         {
-          title: "עיכוב בקבלת מכתב התראה",
+          title: "טיפול בקבלת מכתב התראה",
           description: "ניסוח ושליחת מכתבי התראה לפני נקיטת הליכים משפטיים.",
           longDescription: "ניסוח ושליחת מכתבי התראה לפני נקיטת הליכים משפטיים, במטרה לסיים סכסוכים מחוץ לכותלי בית המשפט.",
           icon: "MailWarning",
