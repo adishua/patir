@@ -49,11 +49,11 @@ export function Hero() {
               <div className="mt-10 flex items-center justify-center lg:justify-start gap-6 text-sm font-medium text-gray-500">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-green-500" />
-                  <span>דיסקרטיות מלאה</span>
+                  <span>מקצועיות</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-green-500" />
-                  <span>שירות מהיר</span>
+                  <span>שקיפות</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-green-500" />
