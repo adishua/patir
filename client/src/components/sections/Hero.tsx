@@ -33,9 +33,9 @@ export function Hero() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <ScrollLink to="contact" smooth={true} duration={500} offset={-80}>
+                <ScrollLink to="services" smooth={true} duration={500} offset={-80}>
                   <Button size="lg" className="w-full sm:w-auto text-lg h-14 px-8 rounded-full bg-primary hover:bg-primary/90 shadow-xl shadow-primary/20">
-                    בדיקת זכאות חינם
+                    בחירת שירות
                     <ArrowLeft className="mr-2 h-5 w-5" />
                   </Button>
                 </ScrollLink>
