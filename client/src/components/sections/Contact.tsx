@@ -8,17 +8,22 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Loader2, Send } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { z } from "zod";
 
 export function Contact() {
   const mutation = useCreateInquiry();
   
   const form = useForm<InsertInquiry>({
-    resolver: zodResolver(insertInquirySchema),
+    resolver: zodResolver(insertInquirySchema.extend({
+      email: z.string().email("כתובת אימייל לא תקינה").optional().or(z.literal("")),
+      message: z.string().min(1, "הודעה היא שדה חובה"),
+    })),
     defaultValues: {
       name: "",
       phone: "",
-      message: ""
-    }
+      email: "",
+      message: "",
+    },
   });
 
   function onSubmit(data: InsertInquiry) {
@@ -93,26 +98,42 @@ export function Contact() {
                     )}
                   />
                   
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>טלפון נייד</FormLabel>
-                        <FormControl>
-                          <Input placeholder="050-0000000" className="h-12 bg-gray-50 border-gray-200 focus:bg-white transition-colors" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>טלפון נייד</FormLabel>
+                          <FormControl>
+                            <Input placeholder="050-0000000" className="h-12 bg-gray-50 border-gray-200 focus:bg-white transition-colors" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>אימייל (אופציונלי)</FormLabel>
+                          <FormControl>
+                            <Input placeholder="your@email.com" className="h-12 bg-gray-50 border-gray-200 focus:bg-white transition-colors" {...field} value={field.value || ""} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
 
                   <FormField
                     control={form.control}
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>הודעה (אופציונלי)</FormLabel>
+                        <FormLabel>הודעה</FormLabel>
                         <FormControl>
                           <Textarea 
                             placeholder="תאר בקצרה את המקרה..." 

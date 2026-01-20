@@ -7,13 +7,15 @@ export const inquiries = pgTable("inquiries", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   phone: text("phone").notNull(),
-  message: text("message"),
+  email: text("email"),
+  message: text("message").notNull(),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
 export const insertInquirySchema = createInsertSchema(inquiries).pick({
   name: true,
   phone: true,
+  email: true,
   message: true,
 });
 
