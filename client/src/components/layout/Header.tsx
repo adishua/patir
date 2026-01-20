@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
-import { Menu, X, Gavel } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logoImg from "@/assets/logo.jpg";
 
 const navItems = [
   { name: "איך זה עובד", to: "how-it-works" },
@@ -28,17 +29,14 @@ export function Header() {
     <header
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent",
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm border-gray-100 py-3" : "bg-transparent py-5"
+        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm border-gray-100 py-2" : "bg-transparent py-4"
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20">
-              <Gavel className="w-6 h-6" />
-            </div>
-            <span className="text-2xl font-bold text-primary tracking-tight">פתיר</span>
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+            <img src={logoImg} alt="פתיר" className="h-12 w-auto" />
           </div>
 
           {/* Desktop Nav */}

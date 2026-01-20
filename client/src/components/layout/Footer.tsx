@@ -1,4 +1,5 @@
-import { Gavel, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import logoImg from "@/assets/logo.jpg";
 
 export function Footer() {
   return (
@@ -7,11 +8,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                <Gavel className="w-5 h-5 text-secondary" />
-              </div>
-              <span className="text-2xl font-bold">פתיר</span>
+            <div className="flex items-center gap-3 mb-4">
+              <img src={logoImg} alt="פתיר" className="h-12 w-auto brightness-0 invert" />
             </div>
             <p className="text-blue-100 text-sm leading-relaxed mb-6">
               פתרונות משפטיים מהירים, מקצועיים ודיסקרטיים.
