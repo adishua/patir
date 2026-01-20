@@ -46,18 +46,33 @@ export function Hero() {
                 </ScrollLink>
               </div>
 
-              <div className="mt-10 flex items-center justify-center lg:justify-start gap-6 text-sm font-medium text-gray-500">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-500" />
-                  <span>מקצועיות</span>
+              <div className="mt-10 grid sm:grid-cols-3 gap-6 text-right">
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2 font-bold text-primary">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    <span>מקצועיות</span>
+                  </div>
+                  <p className="text-sm text-gray-500 leading-relaxed">
+                    את השירות מוביל עורך דין ברק כהן המתמחה בדין הפלילי ובזכויות אדם
+                  </p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-500" />
-                  <span>שקיפות</span>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2 font-bold text-primary">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    <span>שקיפות</span>
+                  </div>
+                  <p className="text-sm text-gray-500 leading-relaxed">
+                    השירות ניתן תוך מתן הסבר שוטף ביחס לכל שלבי הטיפול עד לסיומו
+                  </p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-green-500" />
-                  <span>ללא התחייבות</span>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2 font-bold text-primary">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    <span>ללא התחייבות</span>
+                  </div>
+                  <p className="text-sm text-gray-500 leading-relaxed">
+                    לאחר מילוי טופס ושיחה אישית עימנו תועבר הצעת מחיר כתובה וסופית
+                  </p>
                 </div>
               </div>
             </motion.div>
