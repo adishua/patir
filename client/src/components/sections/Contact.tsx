@@ -2,29 +2,41 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertInquirySchema, type InsertInquiry } from "@shared/schema";
 import { useCreateInquiry } from "@/hooks/use-inquiry";
+import { useServices } from "@/hooks/use-content";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, Send } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { z } from "zod";
+import { useEffect } from "react";
 
-export function Contact() {
+export function Contact({ selectedServiceId }: { selectedServiceId?: number }) {
   const mutation = useCreateInquiry();
+  const { data: services } = useServices();
   
   const form = useForm<InsertInquiry>({
     resolver: zodResolver(insertInquirySchema.extend({
       email: z.string().email("כתובת אימייל לא תקינה").optional().or(z.literal("")),
       message: z.string().min(1, "הודעה היא שדה חובה"),
+      serviceId: z.coerce.number().optional().nullable(),
     })),
     defaultValues: {
       name: "",
       phone: "",
       email: "",
+      serviceId: null,
       message: "",
     },
   });
+
+  useEffect(() => {
+    if (selectedServiceId) {
+      form.setValue("serviceId", selectedServiceId);
+    }
+  }, [selectedServiceId, form]);
 
   function onSubmit(data: InsertInquiry) {
     mutation.mutate(data, {
@@ -127,6 +139,31 @@ export function Contact() {
                       )}
                     />
                   </div>
+
+                  <FormField
+                    control={form.control}
+                    name="serviceId"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>השירות המבוקש</FormLabel>
+                        <Select onValueChange={field.onChange} value={field.value?.toString() || ""}>
+                          <FormControl>
+                            <SelectTrigger className="h-12 bg-gray-50 border-gray-200 focus:bg-white transition-colors">
+                              <SelectValue placeholder="בחר שירות..." />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {services?.map((service) => (
+                              <SelectItem key={service.id} value={service.id.toString()}>
+                                {service.title}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
                   <FormField
                     control={form.control}

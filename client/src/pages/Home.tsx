@@ -8,8 +8,10 @@ import { About } from "@/components/sections/About";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
 import { motion, useScroll, useSpring } from "framer-motion";
+import { useState } from "react";
 
 export default function Home() {
+  const [selectedServiceId, setSelectedServiceId] = useState<number>();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -31,10 +33,10 @@ export default function Home() {
         <Hero />
         <HowItWorks />
         <WhyUs />
-        <Services />
+        <Services onSelectService={setSelectedServiceId} />
         <About />
         <Testimonials />
-        <Contact />
+        <Contact selectedServiceId={selectedServiceId} />
       </main>
 
       <Footer />

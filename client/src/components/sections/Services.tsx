@@ -13,7 +13,7 @@ const iconMap: Record<string, any> = {
   AlertTriangle
 };
 
-export function Services() {
+export function Services({ onSelectService }: { onValueChange?: (id: number) => void; onSelectService?: (id: number) => void }) {
   const { data: services, isLoading } = useServices();
 
   if (isLoading) {
@@ -55,7 +55,13 @@ export function Services() {
                 <p className="text-gray-500 mb-6 leading-relaxed min-h-[3rem]">
                   {service.description}
                 </p>
-                <ScrollLink to="contact" smooth={true} duration={500} offset={-80}>
+                <ScrollLink 
+                  to="contact" 
+                  smooth={true} 
+                  duration={500} 
+                  offset={-80}
+                  onClick={() => onSelectService?.(service.id)}
+                >
                   <Button variant="link" className="p-0 h-auto font-semibold text-secondary hover:text-primary transition-colors group-hover:translate-x-1 duration-300">
                     למידע נוסף <ArrowLeft className="w-4 h-4 mr-2" />
                   </Button>
