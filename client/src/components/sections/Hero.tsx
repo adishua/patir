@@ -21,7 +21,7 @@ export function Hero() {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block py-1 px-3 rounded-full bg-blue-100 text-primary text-sm font-semibold mb-6">
-                שירותים משפטיים אונליין
+                שירות משפטי בהובלת עו״ד ברק כהן
               </span>
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6 text-primary">
                 הדרך המהירה <br/>
