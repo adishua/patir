@@ -48,7 +48,10 @@ export function Services() {
                 <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                   <Icon className="w-7 h-7" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+                <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">{service.title}</h3>
+                <p className="text-sm font-semibold text-secondary mb-3 leading-relaxed">
+                  {service.longDescription || service.description}
+                </p>
                 <p className="text-gray-500 mb-6 leading-relaxed min-h-[3rem]">
                   {service.description}
                 </p>

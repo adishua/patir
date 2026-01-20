@@ -22,6 +22,7 @@ export const services = pgTable("services", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
+  longDescription: text("long_description"),
   icon: text("icon").notNull(), // Lucide icon name
 });
 
