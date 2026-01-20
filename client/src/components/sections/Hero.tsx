@@ -78,36 +78,23 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Image Content */}
-          <div className="order-1 lg:order-2 relative">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/20 border-4 border-white"
-            >
-              <img 
-                src={heroImage} 
-                alt="Legal Services" 
-                className="w-full h-auto object-cover aspect-[4/3]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent mix-blend-multiply" />
-            </motion.div>
+          <div className="order-1 lg:order-2 relative flex items-center justify-center">
+            {/* Image Content Removed */}
             
-            {/* Floating Badge */}
+            {/* Floating Badge (Centered or adjusted) */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 hidden md:block"
+              className="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100"
             >
-              <div className="flex items-center gap-4">
-                <div className="bg-green-100 p-3 rounded-full">
-                  <CheckCircle2 className="w-8 h-8 text-green-600" />
+              <div className="flex flex-col items-center gap-4 text-center">
+                <div className="bg-green-100 p-4 rounded-full">
+                  <CheckCircle2 className="w-12 h-12 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">אחוזי הצלחה</p>
-                  <p className="text-2xl font-bold text-gray-900">96%</p>
+                  <p className="text-lg text-gray-500 mb-1">אחוזי הצלחה</p>
+                  <p className="text-5xl font-extrabold text-primary">96%</p>
                 </div>
               </div>
             </motion.div>
