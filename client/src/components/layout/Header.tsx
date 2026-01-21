@@ -12,7 +12,7 @@ const navItems = [
   { name: "אודות", to: "about" },
 ];
 
-export function Header() {
+export function Header({ onContactClick }: { onContactClick?: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -59,6 +59,7 @@ export function Header() {
             <ScrollLink to="contact" smooth={true} duration={500} offset={-80}>
               <Button 
                 className="hidden md:flex bg-secondary hover:bg-secondary/90 text-white shadow-lg shadow-secondary/25 rounded-full px-6"
+                onClick={onContactClick}
               >
                 צור קשר
               </Button>
@@ -89,7 +90,10 @@ export function Header() {
                 {item.name}
               </ScrollLink>
             ))}
-            <ScrollLink to="contact" smooth={true} duration={500} offset={-80} onClick={() => setIsOpen(false)}>
+            <ScrollLink to="contact" smooth={true} duration={500} offset={-80} onClick={() => {
+              setIsOpen(false);
+              onContactClick?.();
+            }}>
               <Button className="w-full bg-primary text-white mt-2">
                 צור קשר
               </Button>

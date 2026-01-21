@@ -27,7 +27,7 @@ export default function Home() {
         style={{ scaleX }}
       />
       
-      <Header />
+      <Header onContactClick={() => setSelectedServiceId(0)} />
       
       <main className="flex-grow">
         <Hero />

@@ -206,10 +206,6 @@ export function Contact({ selectedServiceId }: { selectedServiceId?: number }) {
                       </>
                     )}
                   </Button>
-                  
-                  <p className="text-center text-xs text-gray-400 mt-4">
-                    בלחיצה על "שלח פנייה" אני מאשר/ת את תנאי השימוש ומדיניות הפרטיות
-                  </p>
                 </form>
               </Form>
             </CardContent>
