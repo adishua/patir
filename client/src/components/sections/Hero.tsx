@@ -93,24 +93,6 @@ export function Hero() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent mix-blend-multiply" />
             </motion.div>
-            
-            {/* Floating Badge */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 hidden md:block"
-            >
-              <div className="flex items-center gap-4">
-                <div className="bg-green-100 p-3 rounded-full">
-                  <CheckCircle2 className="w-8 h-8 text-green-600" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">אחוזי הצלחה</p>
-                  <p className="text-2xl font-bold text-gray-900">96%</p>
-                </div>
-              </div>
-            </motion.div>
           </div>
 
         </div>
