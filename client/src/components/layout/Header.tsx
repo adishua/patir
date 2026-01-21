@@ -10,7 +10,6 @@ const navItems = [
   { name: "למה פתיר", to: "why-us" },
   { name: "שירותים", to: "services" },
   { name: "אודות", to: "about" },
-  { name: "המלצות", to: "testimonials" },
 ];
 
 export function Header() {

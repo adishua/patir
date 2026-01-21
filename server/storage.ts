@@ -76,19 +76,19 @@ export class DatabaseStorage implements IStorage {
     if (existing.length === 0) {
       await db.insert(testimonials).values([
         {
-          name: "דני כהן",
+          name: "דני כ.",
           role: "לקוח מרוצה",
           content: "השירות היה מהיר ומקצועי. הצוות ב'פתיר' עזר לי לסגור את התיק ללא עיכובים מיותרים.",
           rating: 5,
         },
         {
-          name: "שרה לוי",
+          name: "שרה ל.",
           role: "לקוחה",
           content: "יחס אישי ומענה מהיר לכל שאלה. ממליצה בחום לכל מי שזקוק לייעוץ משפטי דחוף.",
           rating: 5,
         },
         {
-          name: "יוסי מזרחי",
+          name: "יוסי מ.",
           role: "בעל עסק",
           content: "עזרו לי עם מכתב התראה שהביא לפתרון הבעיה עוד לפני שהגענו לבית המשפט. תודה רבה!",
           rating: 5,
