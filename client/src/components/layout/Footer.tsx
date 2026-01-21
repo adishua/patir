@@ -34,17 +34,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal Areas */}
-          <div>
-            <h4 className="text-lg font-bold mb-6 text-white">תחומי עיסוק</h4>
-            <ul className="space-y-3 text-blue-100">
-              <li>סגירת תיק פלילי</li>
-              <li>מחיקת רישום משטרתי</li>
-              <li>שינוי עילת סגירה</li>
-              <li>חנינות</li>
-            </ul>
-          </div>
-
           {/* Contact Info */}
           <div>
             <h4 className="text-lg font-bold mb-6 text-white">פרטי התקשרות</h4>
