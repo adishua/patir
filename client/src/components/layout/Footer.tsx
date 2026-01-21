@@ -48,7 +48,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-secondary" />
-                <span>מגדלי עזריאלי, תל אביב</span>
+                <span>ראול וולנברג 6, תל אביב</span>
               </li>
             </ul>
           </div>
