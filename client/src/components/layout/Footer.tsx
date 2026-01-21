@@ -25,6 +25,7 @@ export function Footer() {
               <li><a href="#about" className="hover:text-white transition-colors">אודות</a></li>
               <li><a href="#services" className="hover:text-white transition-colors">שירותים</a></li>
               <li><a href="#contact" className="hover:text-white transition-colors">צור קשר</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">הצהרת נגישות</a></li>
             </ul>
           </div>
 
@@ -61,11 +62,6 @@ export function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-blue-200">
           <p>© {new Date().getFullYear()} פתיר. כל הזכויות שמורות.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white">תנאי שימוש</a>
-            <a href="#" className="hover:text-white">מדיניות פרטיות</a>
-            <a href="#" className="hover:text-white">הצהרת נגישות</a>
-          </div>
         </div>
       </div>
     </footer>
