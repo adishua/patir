@@ -3,7 +3,7 @@ import { Link as ScrollLink } from "react-scroll";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logoImg from "@/assets/logo.jpg";
+import logoImg from "@/assets/logo.png";
 
 const navItems = [
   { name: "איך זה עובד", to: "how-it-works" },
