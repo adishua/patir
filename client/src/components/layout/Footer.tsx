@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { Mail, Phone, MapPin } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 
@@ -21,11 +22,15 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-bold mb-6 text-white">קישורים מהירים</h4>
             <ul className="space-y-3 text-blue-100">
-              <li><a href="#" className="hover:text-white transition-colors">בית</a></li>
-              <li><a href="#about" className="hover:text-white transition-colors">אודות</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">שירותים</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">צור קשר</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">הצהרת נגישות</a></li>
+              <li><a href="/" className="hover:text-white transition-colors">בית</a></li>
+              <li><a href="/#about" className="hover:text-white transition-colors">אודות</a></li>
+              <li><a href="/#services" className="hover:text-white transition-colors">שירותים</a></li>
+              <li><a href="/#contact" className="hover:text-white transition-colors">צור קשר</a></li>
+              <li>
+                <Link href="/accessibility">
+                  <a className="hover:text-white transition-colors">הצהרת נגישות</a>
+                </Link>
+              </li>
             </ul>
           </div>
 
