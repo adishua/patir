@@ -61,8 +61,8 @@ export default function Accessibility() {
                 </p>
                 <ul className="mt-4 space-y-2">
                   <li><strong>שם:</strong> צוות פתיר</li>
-                  <li><strong>טלפון:</strong> 050-1234567</li>
-                  <li><strong>דוא"ל:</strong> office@patir.co.il</li>
+                  <li><strong>טלפון:</strong> 054-7337115</li>
+                  <li><strong>דוא"ל:</strong> info@patir.net</li>
                 </ul>
               </section>
               
