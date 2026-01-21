@@ -57,7 +57,9 @@ export function Header() {
           {/* CTA & Mobile Toggle */}
           <div className="flex items-center gap-4">
             <ScrollLink to="contact" smooth={true} duration={500} offset={-80}>
-              <Button className="hidden md:flex bg-secondary hover:bg-secondary/90 text-white shadow-lg shadow-secondary/25 rounded-full px-6">
+              <Button 
+                className="hidden md:flex bg-secondary hover:bg-secondary/90 text-white shadow-lg shadow-secondary/25 rounded-full px-6"
+              >
                 צור קשר
               </Button>
             </ScrollLink>

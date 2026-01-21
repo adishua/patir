@@ -19,22 +19,26 @@ export function Contact({ selectedServiceId }: { selectedServiceId?: number }) {
   
   const form = useForm<InsertInquiry>({
     resolver: zodResolver(insertInquirySchema.extend({
+      name: z.string().min(1, "שם מלא הוא שדה חובה"),
+      phone: z.string().min(1, "טלפון נייד הוא שדה חובה"),
       email: z.string().email("כתובת אימייל לא תקינה").optional().or(z.literal("")),
       message: z.string().min(1, "הודעה היא שדה חובה"),
-      serviceId: z.coerce.number().optional().nullable(),
+      serviceId: z.coerce.number({ required_error: "יש לבחור שירות" }).min(0, "יש לבחור שירות"),
     })),
     defaultValues: {
       name: "",
       phone: "",
       email: "",
-      serviceId: null,
+      serviceId: undefined,
       message: "",
     },
   });
 
   useEffect(() => {
-    if (selectedServiceId) {
+    if (selectedServiceId !== undefined) {
       form.setValue("serviceId", selectedServiceId);
+    } else {
+      form.setValue("serviceId", 0); // "Other" or default
     }
   }, [selectedServiceId, form]);
 
@@ -148,11 +152,12 @@ export function Contact({ selectedServiceId }: { selectedServiceId?: number }) {
                         <FormLabel>השירות המבוקש</FormLabel>
                         <Select onValueChange={field.onChange} value={field.value?.toString() || ""}>
                           <FormControl>
-                            <SelectTrigger className="h-12 bg-gray-50 border-gray-200 focus:bg-white transition-colors">
+                            <SelectTrigger className="h-12 bg-gray-50 border-gray-200 focus:bg-white transition-colors text-right" dir="rtl">
                               <SelectValue placeholder="בחר שירות..." />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent>
+                          <SelectContent dir="rtl">
+                            <SelectItem value="0">אחר</SelectItem>
                             {services?.map((service) => (
                               <SelectItem key={service.id} value={service.id.toString()}>
                                 {service.title}
