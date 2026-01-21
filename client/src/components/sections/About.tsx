@@ -28,7 +28,7 @@ export function About() {
             <div>
               <h2 className="text-3xl font-bold mb-6 text-primary">קצת עלינו</h2>
               
-              <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+              <div className="space-y-1 text-gray-700 leading-snug text-lg">
                 <p>
                   פתיר הוקמה כדי לשים סוף לחוסר הוודאות, לסיבוכים ולזמן האבוד שמלווים תיקים משפטיים פשוטים יחסית. במקום להיתקע בין מוקדים, טפסים ומכתבים – אצלנו זה קורה ב־3 צעדים פשוטים. והכול אונליין.
                 </p>
