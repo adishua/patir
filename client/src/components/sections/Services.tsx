@@ -45,16 +45,20 @@ export function Services({ onSelectService }: { onValueChange?: (id: number) => 
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="group p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300"
               >
-                <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                  <Icon className="w-7 h-7" />
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{service.title}</h3>
                 </div>
-                <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">{service.title}</h3>
-                <p className="text-sm font-semibold text-secondary mb-3 leading-relaxed">
-                  {service.longDescription || service.description}
-                </p>
-                <p className="text-gray-500 mb-6 leading-relaxed min-h-[3rem]">
-                  {service.description}
-                </p>
+                <div className="space-y-3 mb-6">
+                  <p className="text-sm font-semibold text-secondary leading-relaxed">
+                    {service.longDescription}
+                  </p>
+                  <p className="text-gray-500 leading-relaxed text-sm">
+                    {service.description}
+                  </p>
+                </div>
                 <ScrollLink 
                   to="contact" 
                   smooth={true} 
@@ -63,7 +67,7 @@ export function Services({ onSelectService }: { onValueChange?: (id: number) => 
                   onClick={() => onSelectService?.(service.id)}
                 >
                   <Button variant="link" className="p-0 h-auto font-semibold text-secondary hover:text-primary transition-colors group-hover:translate-x-1 duration-300">
-                    למידע נוסף <ArrowLeft className="w-4 h-4 mr-2" />
+                    לבחירה <ArrowLeft className="w-4 h-4 mr-2" />
                   </Button>
                 </ScrollLink>
               </motion.div>
