@@ -1,16 +1,17 @@
 import { useServices } from "@/hooks/use-content";
-import { Loader2, ArrowLeft, Gavel, FileSignature, Scale, Eraser, AlertTriangle } from "lucide-react";
+import { Loader2, ArrowLeft, FolderArchive, HeartHandshake, FilePlus, MailWarning, FileText, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link as ScrollLink } from "react-scroll";
 import { motion } from "framer-motion";
 
 // Map icon strings from DB to Lucide components
 const iconMap: Record<string, any> = {
-  Gavel,
-  FileSignature,
-  Scale,
-  Eraser,
-  AlertTriangle
+  FolderArchive,
+  HeartHandshake,
+  FilePlus,
+  MailWarning,
+  FileText,
+  RotateCcw
 };
 
 export function Services({ onSelectService }: { onValueChange?: (id: number) => void; onSelectService?: (id: number) => void }) {
