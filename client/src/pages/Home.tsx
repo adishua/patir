@@ -31,9 +31,9 @@ export default function Home() {
       
       <main className="flex-grow">
         <Hero />
+        <Services onSelectService={setSelectedServiceId} />
         <HowItWorks />
         <WhyUs />
-        <Services onSelectService={setSelectedServiceId} />
         <About />
         <Testimonials />
         <Contact selectedServiceId={selectedServiceId} />
