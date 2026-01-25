@@ -27,9 +27,7 @@ export function Footer() {
               <li><a href="/#services" className="hover:text-white transition-colors">שירותים</a></li>
               <li><a href="/#contact" className="hover:text-white transition-colors">צור קשר</a></li>
               <li>
-                <Link href="/accessibility">
-                  <a className="hover:text-white transition-colors">הצהרת נגישות</a>
-                </Link>
+                <Link href="/accessibility" className="hover:text-white transition-colors">הצהרת נגישות</Link>
               </li>
             </ul>
           </div>
