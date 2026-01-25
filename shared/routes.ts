@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import { insertInquirySchema, inquiries, services, testimonials } from './schema';
 
+export type { InsertInquiry } from './schema';
+
 export const api = {
   inquiries: {
     create: {

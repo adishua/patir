@@ -1,5 +1,5 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
+import type { Server } from "http";
 import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
@@ -8,10 +8,6 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  // Seed data
-  await storage.seedServices();
-  await storage.seedTestimonials();
-
   // Inquiries
   app.post(api.inquiries.create.path, async (req, res) => {
     try {
@@ -28,13 +24,13 @@ export async function registerRoutes(
   });
 
   // Services
-  app.get(api.services.list.path, async (req, res) => {
+  app.get(api.services.list.path, async (_req, res) => {
     const services = await storage.getServices();
     res.json(services);
   });
 
   // Testimonials
-  app.get(api.testimonials.list.path, async (req, res) => {
+  app.get(api.testimonials.list.path, async (_req, res) => {
     const items = await storage.getTestimonials();
     res.json(items);
   });
