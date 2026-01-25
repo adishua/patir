@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import barakImage from "@assets/barak.jpeg";
 
 export function About() {
   return (
@@ -12,9 +12,8 @@ export function About() {
             
             <div className="relative">
               <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100">
-                {/* lawyer portrait professional */}
-                <img 
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"
+                <img
+                  src={barakImage}
                   alt="עו״ד ברק כהן"
                   className="w-full h-full object-cover"
                 />
