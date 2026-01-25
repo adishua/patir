@@ -1,24 +1,19 @@
-import { useQuery } from "@tanstack/react-query";
-import { api } from "@shared/routes";
+import { services } from "@/data/services";
+import { testimonials } from "@/data/testimonials";
 
+// Static data hooks - no API calls needed
 export function useServices() {
-  return useQuery({
-    queryKey: [api.services.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.services.list.path);
-      if (!res.ok) throw new Error("Failed to fetch services");
-      return api.services.list.responses[200].parse(await res.json());
-    },
-  });
+  return {
+    data: services,
+    isLoading: false,
+    error: null,
+  };
 }
 
 export function useTestimonials() {
-  return useQuery({
-    queryKey: [api.testimonials.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.testimonials.list.path);
-      if (!res.ok) throw new Error("Failed to fetch testimonials");
-      return api.testimonials.list.responses[200].parse(await res.json());
-    },
-  });
+  return {
+    data: testimonials,
+    isLoading: false,
+    error: null,
+  };
 }

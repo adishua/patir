@@ -1,24 +1,31 @@
 import { useMutation } from "@tanstack/react-query";
-import { api, type InsertInquiry } from "@shared/routes";
 import { useToast } from "@/hooks/use-toast";
+import { config } from "@/data/config";
+
+export interface InquiryData {
+  name: string;
+  phone: string;
+  email?: string;
+  serviceId?: number;
+  message: string;
+}
 
 export function useCreateInquiry() {
   const { toast } = useToast();
 
   return useMutation({
-    mutationFn: async (data: InsertInquiry) => {
-      const res = await fetch(api.inquiries.create.path, {
-        method: api.inquiries.create.method,
+    mutationFn: async (data: InquiryData) => {
+      const res = await fetch(config.webhookUrl, {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
       if (!res.ok) {
-        const error = await res.json();
-        throw new Error(error.message || "Failed to submit inquiry");
+        throw new Error("Failed to submit inquiry");
       }
 
-      return api.inquiries.create.responses[201].parse(await res.json());
+      return res.json();
     },
     onSuccess: () => {
       toast({

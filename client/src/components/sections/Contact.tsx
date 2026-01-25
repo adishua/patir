@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { insertInquirySchema, type InsertInquiry } from "@shared/schema";
-import { useCreateInquiry } from "@/hooks/use-inquiry";
+import { useCreateInquiry, type InquiryData } from "@/hooks/use-inquiry";
 import { useServices } from "@/hooks/use-content";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,18 +12,20 @@ import { Card, CardContent } from "@/components/ui/card";
 import { z } from "zod";
 import { useEffect } from "react";
 
+const inquirySchema = z.object({
+  name: z.string().min(1, "שם מלא הוא שדה חובה"),
+  phone: z.string().min(1, "טלפון נייד הוא שדה חובה"),
+  email: z.string().email("כתובת אימייל לא תקינה").optional().or(z.literal("")),
+  message: z.string().min(1, "הודעה היא שדה חובה"),
+  serviceId: z.coerce.number({ required_error: "יש לבחור שירות" }).min(0, "יש לבחור שירות"),
+});
+
 export function Contact({ selectedServiceId }: { selectedServiceId?: number }) {
   const mutation = useCreateInquiry();
   const { data: services } = useServices();
-  
-  const form = useForm<InsertInquiry>({
-    resolver: zodResolver(insertInquirySchema.extend({
-      name: z.string().min(1, "שם מלא הוא שדה חובה"),
-      phone: z.string().min(1, "טלפון נייד הוא שדה חובה"),
-      email: z.string().email("כתובת אימייל לא תקינה").optional().or(z.literal("")),
-      message: z.string().min(1, "הודעה היא שדה חובה"),
-      serviceId: z.coerce.number({ required_error: "יש לבחור שירות" }).min(0, "יש לבחור שירות"),
-    })),
+
+  const form = useForm<InquiryData>({
+    resolver: zodResolver(inquirySchema),
     defaultValues: {
       name: "",
       phone: "",
@@ -42,7 +43,7 @@ export function Contact({ selectedServiceId }: { selectedServiceId?: number }) {
     }
   }, [selectedServiceId, form]);
 
-  function onSubmit(data: InsertInquiry) {
+  function onSubmit(data: InquiryData) {
     mutation.mutate(data, {
       onSuccess: () => form.reset()
     });
