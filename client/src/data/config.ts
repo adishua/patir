@@ -3,5 +3,5 @@
 export const config = {
   // n8n webhook URL for form submissions
   // Update this to your actual n8n webhook endpoint
-  webhookUrl: import.meta.env.VITE_WEBHOOK_URL || "https://api.patir.net/webhook/contact",
+  webhookUrl: import.meta.env.VITE_WEBHOOK_URL || "https://patir-api.app.n8n.cloud/webhook/contact",
 };
