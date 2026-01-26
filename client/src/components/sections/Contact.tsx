@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCreateInquiry, type InquiryData } from "@/hooks/use-inquiry";
 import { useServices } from "@/hooks/use-content";
+import { ServiceTitle } from "@/data/services";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -17,10 +18,10 @@ const inquirySchema = z.object({
   phone: z.string().min(1, "טלפון נייד הוא שדה חובה"),
   email: z.string().email("כתובת אימייל לא תקינה").optional().or(z.literal("")),
   message: z.string().min(1, "הודעה היא שדה חובה"),
-  serviceId: z.coerce.number({ required_error: "יש לבחור שירות" }).min(0, "יש לבחור שירות"),
+  service: z.string().min(1, "יש לבחור שירות"),
 });
 
-export function Contact({ selectedServiceId }: { selectedServiceId?: number }) {
+export function Contact({ selectedService }: { selectedService?: string }) {
   const mutation = useCreateInquiry();
   const { data: services } = useServices();
 
@@ -30,18 +31,18 @@ export function Contact({ selectedServiceId }: { selectedServiceId?: number }) {
       name: "",
       phone: "",
       email: "",
-      serviceId: undefined,
+      service: "",
       message: "",
     },
   });
 
   useEffect(() => {
-    if (selectedServiceId !== undefined) {
-      form.setValue("serviceId", selectedServiceId);
+    if (selectedService) {
+      form.setValue("service", selectedService);
     } else {
-      form.setValue("serviceId", 0); // "Other" or default
+      form.setValue("service", "");
     }
-  }, [selectedServiceId, form]);
+  }, [selectedService, form]);
 
   function onSubmit(data: InquiryData) {
     mutation.mutate(data, {
@@ -147,20 +148,20 @@ export function Contact({ selectedServiceId }: { selectedServiceId?: number }) {
 
                   <FormField
                     control={form.control}
-                    name="serviceId"
+                    name="service"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>השירות המבוקש</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value?.toString() || ""}>
+                        <Select onValueChange={field.onChange} value={field.value || ""}>
                           <FormControl>
                             <SelectTrigger className="h-12 bg-gray-50 border-gray-200 focus:bg-white transition-colors text-right" dir="rtl">
                               <SelectValue placeholder="בחר שירות..." />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent dir="rtl">
-                            <SelectItem value="0">אחר</SelectItem>
+                            <SelectItem value={ServiceTitle.OTHER}>{ServiceTitle.OTHER}</SelectItem>
                             {services?.map((service) => (
-                              <SelectItem key={service.id} value={service.id.toString()}>
+                              <SelectItem key={service.title} value={service.title}>
                                 {service.title}
                               </SelectItem>
                             ))}

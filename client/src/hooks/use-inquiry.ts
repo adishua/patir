@@ -6,7 +6,7 @@ export interface InquiryData {
   name: string;
   phone: string;
   email?: string;
-  serviceId?: number;
+  service?: string;
   message: string;
 }
 
@@ -15,10 +15,18 @@ export function useCreateInquiry() {
 
   return useMutation({
     mutationFn: async (data: InquiryData) => {
+      const payload = {
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        service: data.service || "",
+        message: data.message,
+      };
+
       const res = await fetch(config.webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
 
       if (!res.ok) {

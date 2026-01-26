@@ -1,5 +1,14 @@
+export const ServiceTitle = {
+  FILE_ARCHIVAL: "בקשה לגניזת תיק",
+  PARDON_REQUEST: "בקשת חנינה",
+  PRIVATE_CRIMINAL_COMPLAINT: "הגשת קובלנה פלילית פרטית",
+  WARNING_LETTER: "טיפול בקבלת מכתב התראה",
+  INDICTMENT: "כתב אישום",
+  FILE_CLOSURE_APPEAL: "ערר על סגירת תיק",
+  OTHER: "אחר",
+} as const;
+
 export interface Service {
-  id: number;
   title: string;
   description: string;
   longDescription: string | null;
@@ -8,43 +17,37 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    id: 12,
-    title: "בקשה לגניזת תיק",
+    title: ServiceTitle.FILE_ARCHIVAL,
     description: "סגירת תיק חקירה ומניעת הגשת כתב אישום לבית משפט",
     longDescription: "נפתחה נגדך חקירה והתיק עדיין פתוח? אנו נבחן את המקרה ונגיש בקשה מתאימה לסגירת התיק.",
     icon: "FolderArchive",
   },
   {
-    id: 13,
-    title: "בקשת חנינה",
+    title: ServiceTitle.PARDON_REQUEST,
     description: "הגשת פנייה מתאימה לנשיא המדינה.",
     longDescription: "בניגוד למה שנהוג לחשוב, בקשת חנינה אינה רק למי שנגזר עליו עונש מאסר. ניתן לבקש חנינה אפילו בקשר לקנסות. בקשת חנינה מתאימה גם למי שנושא הרשעה פלילית, כאשר בנסיבות המתאימות ניתן לבקש קיצור תקופת התיישנות או מחיקה.",
     icon: "HeartHandshake",
   },
   {
-    id: 14,
-    title: "הגשת קובלנה פלילית פרטית",
+    title: ServiceTitle.PRIVATE_CRIMINAL_COMPLAINT,
     description: "תוכל לבחון הגשת כתב אישום בגין עבירה שבוצעה בך, ללא צורך בפרקליטות ובאופן עצמאי",
     longDescription: "רבים לא יודעים, אך ישנם מקרים שבהם אזרח יכול להגיש כתב אישום בגין עבירות פליליות שבוצעו כלפיו. אנו נבחן את המקרה ונייצג אותך בהליך.",
     icon: "FilePlus",
   },
   {
-    id: 15,
-    title: "טיפול בקבלת מכתב התראה",
+    title: ServiceTitle.WARNING_LETTER,
     description: "מענה מקצועי באמצעות עורך דין",
     longDescription: "קיבלת מכתב התראה מעורך דין בו הוא מאיים שאם לא תשלם כסף ללקוח שלו, תוגש נגדך תביעה כספית משמעותית? פעמים רבות מדובר באיום סרק. אנו נשיב למכתב באופן מקצועי.",
     icon: "MailWarning",
   },
   {
-    id: 16,
-    title: "כתב אישום",
+    title: ServiceTitle.INDICTMENT,
     description: "ייצוג בהליך פלילי",
     longDescription: "קיבלת כתב אישום? המדינה טוענת שביצעת עבירה? אתה זקוק לייצוג מקצועי. אנחנו נעמוד לצדך ונעמיד עבורך את הטיעונים הטובים ביותר מול התביעה.",
     icon: "FileText",
   },
   {
-    id: 17,
-    title: "ערר על סגירת תיק",
+    title: ServiceTitle.FILE_CLOSURE_APPEAL,
     description: "התלוננת והמשטרה סגרה את התיק? תוכל לבקש את פתיחתו מחדש",
     longDescription: "אין דבר מתסכל יותר מאשר תלונה מוצדקת שהגשת למשטרה, והיא סוגרת את התיק. יש דרך לשכנע את המשטרה לפתוח את התיק ולמצות את הדין.",
     icon: "RotateCcw",

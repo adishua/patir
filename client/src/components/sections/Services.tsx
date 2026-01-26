@@ -28,8 +28,8 @@ const iconMap: Record<string, any> = {
 export function Services({
   onSelectService,
 }: {
-  onValueChange?: (id: number) => void;
-  onSelectService?: (id: number) => void;
+  onValueChange?: (title: string) => void;
+  onSelectService?: (title: string) => void;
 }) {
   const { data: services, isLoading } = useServices();
 
@@ -57,7 +57,7 @@ export function Services({
 
             return (
               <motion.div
-                key={service.id}
+                key={service.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -85,7 +85,7 @@ export function Services({
                   smooth={true}
                   duration={500}
                   offset={-80}
-                  onClick={() => onSelectService?.(service.id)}
+                  onClick={() => onSelectService?.(service.title)}
                 >
                   <Button
                     variant="link"

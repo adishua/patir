@@ -7,11 +7,12 @@ import { Services } from "@/components/sections/Services";
 import { About } from "@/components/sections/About";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
+import { ServiceTitle } from "@/data/services";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useState } from "react";
 
 export default function Home() {
-  const [selectedServiceId, setSelectedServiceId] = useState<number>();
+  const [selectedService, setSelectedService] = useState<string>();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -26,17 +27,17 @@ export default function Home() {
         className="fixed top-0 left-0 right-0 h-1.5 bg-secondary origin-left z-[100]"
         style={{ scaleX }}
       />
-      
-      <Header onContactClick={() => setSelectedServiceId(0)} />
-      
+
+      <Header onContactClick={() => setSelectedService(ServiceTitle.OTHER)} />
+
       <main className="flex-grow">
         <Hero />
-        <Services onSelectService={setSelectedServiceId} />
+        <Services onSelectService={setSelectedService} />
         <HowItWorks />
         <WhyUs />
         <About />
         <Testimonials />
-        <Contact selectedServiceId={selectedServiceId} />
+        <Contact selectedService={selectedService} />
       </main>
 
       <Footer />
