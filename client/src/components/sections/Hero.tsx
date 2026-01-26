@@ -2,7 +2,7 @@ import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link as ScrollLink } from "react-scroll";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import heroImage from "@assets/generated_images/illustrative_judicial_scales_legal_concept.png";
+import heroImage from "@assets/generated_images/illustrative_judicial_scales_legal_concept.webp";
 
 export function Hero() {
   return (
