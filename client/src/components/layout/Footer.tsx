@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Mail, Phone, MapPin } from "lucide-react";
-import logoImg from "@/assets/logo.png";
+import logoImg from "@/assets/logo_optimized.webp";
 
 function FooterNavLink({ to, children }: { to: string; children: React.ReactNode }) {
   const [location, setLocation] = useLocation();

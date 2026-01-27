@@ -2,7 +2,7 @@ import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link as ScrollLink } from "react-scroll";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import heroImage from "@assets/generated_images/illustrative_judicial_scales_legal_concept.webp";
+import heroImage from "@assets/generated_images/illustrative_judicial_scales_legal_concept_optimized.webp";
 
 export function Hero() {
   return (
@@ -86,10 +86,11 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/20 border-4 border-white"
             >
-              <img 
-                src={heroImage} 
-                alt="Legal Services" 
+              <img
+                src={heroImage}
+                alt="Legal Services"
                 className="w-full h-auto object-cover aspect-[4/3]"
+                fetchPriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent mix-blend-multiply" />
             </motion.div>

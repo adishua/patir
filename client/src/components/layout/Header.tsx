@@ -4,7 +4,7 @@ import { useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logoImg from "@/assets/logo.png";
+import logoImg from "@/assets/logo_optimized.webp";
 
 const navItems = [
   { name: "איך זה עובד", to: "how-it-works" },

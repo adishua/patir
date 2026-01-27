@@ -1,5 +1,5 @@
 import { Users, Monitor, Layout, Globe } from "lucide-react";
-import abstractLegal from "@assets/generated_images/minimalist_legal_background_pattern_illustration.png";
+import abstractLegal from "@assets/generated_images/minimalist_legal_background_optimized.webp";
 
 const benefits = [
   {
