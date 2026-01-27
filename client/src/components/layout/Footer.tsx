@@ -1,6 +1,35 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Mail, Phone, MapPin } from "lucide-react";
 import logoImg from "@/assets/logo.png";
+
+function FooterNavLink({ to, children }: { to: string; children: React.ReactNode }) {
+  const [location, setLocation] = useLocation();
+  const isHome = location === "/";
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (isHome) {
+      const element = document.getElementById(to);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      setLocation(`/#${to}`);
+      setTimeout(() => {
+        const element = document.getElementById(to);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
+  };
+
+  return (
+    <a href={`/#${to}`} onClick={handleClick} className="hover:text-white transition-colors">
+      {children}
+    </a>
+  );
+}
 
 export function Footer() {
   return (
@@ -22,10 +51,10 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-bold mb-6 text-white">קישורים מהירים</h4>
             <ul className="space-y-3 text-blue-100">
-              <li><a href="/" className="hover:text-white transition-colors">בית</a></li>
-              <li><a href="/#about" className="hover:text-white transition-colors">אודות</a></li>
-              <li><a href="/#services" className="hover:text-white transition-colors">שירותים</a></li>
-              <li><a href="/#contact" className="hover:text-white transition-colors">צור קשר</a></li>
+              <li><Link href="/" className="hover:text-white transition-colors">בית</Link></li>
+              <li><FooterNavLink to="about">אודות</FooterNavLink></li>
+              <li><FooterNavLink to="services">שירותים</FooterNavLink></li>
+              <li><FooterNavLink to="contact">צור קשר</FooterNavLink></li>
               <li>
                 <Link href="/accessibility" className="hover:text-white transition-colors">הצהרת נגישות</Link>
               </li>
