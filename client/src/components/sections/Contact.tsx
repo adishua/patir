@@ -19,6 +19,7 @@ const inquirySchema = z.object({
   email: z.string().email("כתובת אימייל לא תקינה").optional().or(z.literal("")),
   message: z.string().min(1, "הודעה היא שדה חובה"),
   service: z.string().min(1, "יש לבחור שירות"),
+  company: z.string().optional(),
 });
 
 export function Contact({ selectedService }: { selectedService?: string }) {
@@ -33,6 +34,7 @@ export function Contact({ selectedService }: { selectedService?: string }) {
       email: "",
       service: "",
       message: "",
+      company: "",
     },
   });
 
@@ -187,6 +189,15 @@ export function Contact({ selectedService }: { selectedService?: string }) {
                         <FormMessage />
                       </FormItem>
                     )}
+                  />
+
+                  <input
+                    type="text"
+                    name="company"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px' }}
+                    {...form.register("company")}
                   />
 
                   <Button 

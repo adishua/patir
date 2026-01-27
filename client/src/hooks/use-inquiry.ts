@@ -8,6 +8,7 @@ export interface InquiryData {
   email?: string;
   service?: string;
   message: string;
+  company?: string;
 }
 
 export function useCreateInquiry() {
@@ -15,6 +16,10 @@ export function useCreateInquiry() {
 
   return useMutation({
     mutationFn: async (data: InquiryData) => {
+      if (data.company) {
+        return { success: true };
+      }
+
       const payload = {
         name: data.name,
         phone: data.phone,
