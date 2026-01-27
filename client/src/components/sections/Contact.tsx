@@ -193,7 +193,6 @@ export function Contact({ selectedService }: { selectedService?: string }) {
 
                   <input
                     type="text"
-                    name="company"
                     tabIndex={-1}
                     autoComplete="off"
                     style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px' }}
