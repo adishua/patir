@@ -29,6 +29,12 @@ export function Footer() {
               <li>
                 <Link href="/accessibility" className="hover:text-white transition-colors">הצהרת נגישות</Link>
               </li>
+              <li>
+                <Link href="/privacy" className="hover:text-white transition-colors">מדיניות פרטיות</Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:text-white transition-colors">תנאי שימוש</Link>
+              </li>
             </ul>
           </div>
 
