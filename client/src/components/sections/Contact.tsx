@@ -60,7 +60,6 @@ export function Contact({ selectedService }: { selectedService?: string }) {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
           <div className="text-white">
-            <h2 className="text-4xl font-bold mb-6">בדיקת זכאות חינם</h2>
             <p className="text-blue-100 text-lg mb-8 leading-relaxed max-w-lg">
               אל תחכה שהבעיה תיעלם מעצמה. השאר פרטים עכשיו ועורך דין מומחה יחזור אליך לבחינת המקרה - ללא עלות וללא התחייבות.
             </p>
