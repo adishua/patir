@@ -65,30 +65,30 @@ export function Contact({ selectedService }: { selectedService?: string }) {
             </p>
             
             <div className="space-y-6">
-              <div className="flex items-start gap-4">
+              <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-secondary shrink-0">
                   <span className="font-bold text-xl">1</span>
                 </div>
-                <div>
-                  <h4 className="font-bold text-xl mb-1">משאירים פרטים</h4>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-lg mb-1 text-white">משאירים פרטים</h4>
                   <p className="text-blue-200 text-sm">ממלאים את הטופס הקצר בתוך דקה</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
+              <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-secondary shrink-0">
                   <span className="font-bold text-xl">2</span>
                 </div>
-                <div>
-                  <h4 className="font-bold text-xl mb-1">מקבלים שיחה</h4>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-lg mb-1 text-white">מקבלים שיחה</h4>
                   <p className="text-blue-200 text-sm">עורך דין חוזר אליך לשיחת ייעוץ ראשונית</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
+              <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-secondary shrink-0">
                   <span className="font-bold text-xl">3</span>
                 </div>
-                <div>
-                  <h4 className="font-bold text-xl mb-1">יוצאים לדרך</h4>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-lg mb-1 text-white">יוצאים לדרך</h4>
                   <p className="text-blue-200 text-sm">מתחילים בטיפול בתיק עד לסגירתו</p>
                 </div>
               </div>
