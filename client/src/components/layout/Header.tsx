@@ -82,7 +82,7 @@ export function Header({ onContactClick }: { onContactClick?: () => void }) {
               setLocation("/");
             }
           }}>
-            <img src={logoImg} alt="פתיר" className="h-12 w-auto" />
+            <img src={logoImg} alt="פתיר" className="h-12 w-auto" width="48" height="48" />
           </div>
 
           {/* Desktop Nav */}

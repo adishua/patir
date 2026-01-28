@@ -30,23 +30,35 @@
 
     <link rel="icon" type="image/png" href="/favicon.png" />
 
-    <!-- Critical resource preloads - Hebrew subset (primary language) -->
+    <!-- Preconnect to external domains for faster third-party resource loading -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+
+    <!-- Critical resource preloads - Only critical weights (400, 700) for Hebrew (primary) -->
     <link rel="preload" href="/fonts/assistant-400-hebrew.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/assistant-500-hebrew.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/assistant-600-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/assistant-700-hebrew.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" as="image" href="/images/hero.webp" type="image/webp" fetchpriority="high" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Google Analytics - loaded after main content -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PECRHRLG2"></script>
+    <!-- Google Analytics - deferred loading after page load for better performance -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-3PECRHRLG2');
+
+      // Load GA script after page load
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-3PECRHRLG2';
+          document.head.appendChild(script);
+        }, 1000);
+      });
     </script>
   </body>
 </html>

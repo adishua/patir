@@ -8,32 +8,34 @@ import { About } from "@/components/sections/About";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
 import { ServiceTitle } from "@/data/services";
-import { motion, useScroll, useSpring } from "framer-motion";
 import { useState, useEffect } from "react";
 
 export default function Home() {
   const [selectedService, setSelectedService] = useState<string>();
-  const [scrollMounted, setScrollMounted] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    requestAnimationFrame(() => setScrollMounted(true));
+    const updateScrollProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(progress);
+    };
+
+    // Use passive listener for better performance
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
+
+    return () => window.removeEventListener('scroll', updateScrollProgress);
   }, []);
 
   return (
     <div className="min-h-screen flex flex-col font-sans text-foreground bg-background">
-      {/* Scroll Progress Bar */}
-      {scrollMounted && (
-        <motion.div
-          className="fixed top-0 left-0 right-0 h-1.5 bg-secondary origin-left z-[100]"
-          style={{ scaleX }}
-        />
-      )}
+      {/* Scroll Progress Bar - Pure CSS transform for better performance */}
+      <div
+        className="fixed top-0 left-0 right-0 h-1.5 bg-secondary origin-left z-[100] transition-transform duration-100 ease-out"
+        style={{ transform: `scaleX(${scrollProgress / 100})` }}
+      />
 
       <Header onContactClick={() => setSelectedService(ServiceTitle.OTHER)} />
 

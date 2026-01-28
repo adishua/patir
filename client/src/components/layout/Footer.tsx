@@ -39,7 +39,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <img src={logoImg} alt="פתיר" className="h-12 w-auto brightness-0 invert" />
+              <img src={logoImg} alt="פתיר" className="h-12 w-auto brightness-0 invert" width="48" height="48" />
             </div>
             <p className="text-blue-100 text-sm leading-relaxed mb-6">
               פתרונות משפטיים מהירים, מקצועיים ודיסקרטיים.
