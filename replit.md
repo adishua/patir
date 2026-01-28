@@ -82,5 +82,4 @@ shared/           # Shared between client/server
 
 ### Development Tools
 - Vite with React plugin for frontend development
-- Replit-specific plugins for development banners and error overlays
 - TypeScript with strict mode and path aliases (@/, @shared/)
