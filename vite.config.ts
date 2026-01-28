@@ -26,6 +26,9 @@ export default defineConfig({
     emptyOutDir: true,
     cssCodeSplit: true,
     cssMinify: 'lightningcss',
+    modulePreload: {
+      polyfill: false, // Modern browsers only - improves performance
+    },
     rollupOptions: {
       output: {
         manualChunks: {
