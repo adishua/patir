@@ -9,10 +9,11 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
 import { ServiceTitle } from "@/data/services";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [selectedService, setSelectedService] = useState<string>();
+  const [scrollMounted, setScrollMounted] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -20,13 +21,19 @@ export default function Home() {
     restDelta: 0.001
   });
 
+  useEffect(() => {
+    requestAnimationFrame(() => setScrollMounted(true));
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col font-sans text-foreground bg-background">
       {/* Scroll Progress Bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1.5 bg-secondary origin-left z-[100]"
-        style={{ scaleX }}
-      />
+      {scrollMounted && (
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-1.5 bg-secondary origin-left z-[100]"
+          style={{ scaleX }}
+        />
+      )}
 
       <Header onContactClick={() => setSelectedService(ServiceTitle.OTHER)} />
 

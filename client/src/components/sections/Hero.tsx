@@ -1,7 +1,6 @@
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link as ScrollLink } from "react-scroll";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 
 const heroImage = "/images/hero.webp";
 
@@ -16,11 +15,7 @@ export function Hero() {
           
           {/* Text Content */}
           <div className="order-2 lg:order-1 text-center lg:text-right">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="hero-reveal">
               <span className="inline-block py-1 px-3 rounded-full bg-blue-100 text-primary text-sm font-semibold mb-6">
                 שירות משפטי בהובלת עו״ד ברק כהן
               </span>
@@ -76,25 +71,20 @@ export function Hero() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Image Content */}
           <div className="order-1 lg:order-2 relative">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/20 border-4 border-white"
-            >
+            <div className="hero-image-reveal relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/20 border-4 border-white">
               <img
                 src={heroImage}
                 alt="Legal Services"
                 className="w-full h-auto object-cover aspect-[4/3]"
-                fetchPriority="high"
+                fetchpriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent mix-blend-multiply" />
-            </motion.div>
+            </div>
           </div>
 
         </div>
