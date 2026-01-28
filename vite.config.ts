@@ -3,38 +3,13 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import { fileURLToPath } from "url";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
-import { type Plugin } from "vite";
-import Critters from "critters";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-// Critical CSS extraction plugin
-function criticalCSSPlugin(): Plugin {
-  return {
-    name: 'vite-plugin-critical-css',
-    apply: 'build',
-    async closeBundle() {
-      const critters = new Critters({
-        path: path.resolve(__dirname, 'dist'),
-        logLevel: 'info',
-        pruneSource: false, // Keep original CSS for progressive enhancement
-        inlineThreshold: 0, // Inline all critical CSS
-      });
-
-      const indexPath = path.resolve(__dirname, 'dist', 'index.html');
-      const fs = await import('fs/promises');
-      const html = await fs.readFile(indexPath, 'utf-8');
-      const inlinedHtml = await critters.process(html);
-      await fs.writeFile(indexPath, inlinedHtml);
-    },
-  };
-}
 
 export default defineConfig({
   plugins: [
     react(),
     runtimeErrorOverlay(),
-    criticalCSSPlugin(),
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
       ? [
