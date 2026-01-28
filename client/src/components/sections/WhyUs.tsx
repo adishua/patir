@@ -33,6 +33,7 @@ export function WhyUs() {
           src={abstractLegal}
           alt=""
           className="w-full h-full object-contain object-left-bottom"
+          loading="lazy"
         />
       </div>
 
