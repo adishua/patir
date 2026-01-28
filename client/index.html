@@ -41,11 +41,20 @@
 
     <!-- Critical font-face declarations (must be inline to match preloads) -->
     <style>
+      /* Fallback font with metrics matching Assistant */
+      @font-face {
+        font-family: 'Assistant Fallback';
+        src: local('Arial');
+        size-adjust: 100%;
+        ascent-override: 103%;
+        descent-override: 27%;
+        line-gap-override: 0%;
+      }
       @font-face {
         font-family: 'Assistant';
         font-style: normal;
         font-weight: 400;
-        font-display: optional;
+        font-display: swap;
         src: url('/fonts/assistant-400-hebrew.woff2') format('woff2');
         unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
       }
@@ -53,7 +62,7 @@
         font-family: 'Assistant';
         font-style: normal;
         font-weight: 700;
-        font-display: optional;
+        font-display: swap;
         src: url('/fonts/assistant-700-hebrew.woff2') format('woff2');
         unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
       }
