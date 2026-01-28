@@ -12,7 +12,7 @@ const navItems = [
   { name: "אודות", to: "about" },
 ];
 
-function NavLink({ to, children, className, onClick }: { to: string; children: React.ReactNode; className?: string; onClick?: () => void }) {
+function NavLink({ to, children, className, onClick, ariaLabel }: { to: string; children: React.ReactNode; className?: string; onClick?: () => void; ariaLabel?: string }) {
   const [location, setLocation] = useLocation();
   const isHome = location === "/";
 
@@ -28,7 +28,7 @@ function NavLink({ to, children, className, onClick }: { to: string; children: R
   };
 
   return (
-    <a href={`/#${to}`} className={className} onClick={handleClick}>
+    <a href={`/#${to}`} className={className} onClick={handleClick} aria-label={ariaLabel}>
       {children}
     </a>
   );
@@ -83,7 +83,7 @@ export function Header({ onContactClick }: { onContactClick?: () => void }) {
 
           {/* CTA & Mobile Toggle */}
           <div className="flex items-center gap-4">
-            <NavLink to="contact" onClick={onContactClick}>
+            <NavLink to="contact" onClick={onContactClick} ariaLabel="צור קשר">
               <Button
                 className="hidden md:flex bg-secondary hover:bg-secondary/90 text-white shadow-lg shadow-secondary/25 rounded-full px-6"
               >
@@ -117,7 +117,7 @@ export function Header({ onContactClick }: { onContactClick?: () => void }) {
             <NavLink to="contact" onClick={() => {
               setIsOpen(false);
               onContactClick?.();
-            }}>
+            }} ariaLabel="צור קשר">
               <Button className="w-full bg-primary text-white mt-2">
                 צור קשר
               </Button>
