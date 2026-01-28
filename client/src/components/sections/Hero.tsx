@@ -81,7 +81,6 @@ export function Hero() {
                 src={heroImage}
                 alt="Legal Services"
                 className="w-full h-auto object-cover aspect-[4/3]"
-                fetchpriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent mix-blend-multiply" />
             </div>
