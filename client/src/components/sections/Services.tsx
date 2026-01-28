@@ -11,7 +11,6 @@ import {
   Gavel,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link as ScrollLink } from "react-scroll";
 import { motion } from "framer-motion";
 
 // Map icon strings from DB to Lucide components
@@ -80,12 +79,13 @@ export function Services({
                     {service.description}
                   </p>
                 </div>
-                <ScrollLink
-                  to="contact"
-                  smooth={true}
-                  duration={500}
-                  offset={-80}
-                  onClick={() => onSelectService?.(service.title)}
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onSelectService?.(service.title);
+                    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
                 >
                   <Button
                     variant="link"
@@ -93,7 +93,7 @@ export function Services({
                   >
                     לבחירה <ArrowLeft className="w-4 h-4 mr-2" />
                   </Button>
-                </ScrollLink>
+                </a>
               </motion.div>
             );
           })}

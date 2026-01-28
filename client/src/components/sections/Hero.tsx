@@ -1,5 +1,4 @@
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
-import { Link as ScrollLink } from "react-scroll";
 import { Button } from "@/components/ui/button";
 
 const heroImage = "/images/hero.webp";
@@ -29,17 +28,29 @@ export function Hero() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <ScrollLink to="services" smooth={true} duration={500} offset={-80}>
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
+                >
                   <Button size="lg" className="w-full sm:w-auto text-lg h-14 px-8 rounded-full bg-primary hover:bg-primary/90 shadow-xl shadow-primary/20">
                     בחירת שירות
                     <ArrowLeft className="mr-2 h-5 w-5" />
                   </Button>
-                </ScrollLink>
-                <ScrollLink to="how-it-works" smooth={true} duration={500} offset={-80}>
+                </a>
+                <a
+                  href="#how-it-works"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
+                >
                   <Button variant="outline" size="lg" className="w-full sm:w-auto text-lg h-14 px-8 rounded-full border-2 hover:bg-gray-50">
                     איך זה עובד?
                   </Button>
-                </ScrollLink>
+                </a>
               </div>
 
               <div className="mt-10 grid sm:grid-cols-3 gap-6 text-right">
