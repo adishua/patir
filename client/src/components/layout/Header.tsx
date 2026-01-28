@@ -109,6 +109,7 @@ export function Header({ onContactClick }: { onContactClick?: () => void }) {
             </NavLink>
 
             <button
+              aria-label={isOpen ? "סגור תפריט" : "פתח תפריט"}
               className="md:hidden p-2 text-gray-600 hover:text-primary transition-colors"
               onClick={() => setIsOpen(!isOpen)}
             >

@@ -72,7 +72,7 @@ export function Contact({ selectedService }: { selectedService?: string }) {
                   <span className="font-bold text-xl">1</span>
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-semibold text-lg mb-1 text-white">משאירים פרטים</h4>
+                  <h3 className="font-semibold text-lg mb-1 text-white">משאירים פרטים</h3>
                   <p className="text-blue-200 text-sm">ממלאים את הטופס הקצר בתוך דקה</p>
                 </div>
               </div>
@@ -81,7 +81,7 @@ export function Contact({ selectedService }: { selectedService?: string }) {
                   <span className="font-bold text-xl">2</span>
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-semibold text-lg mb-1 text-white">מקבלים שיחה</h4>
+                  <h3 className="font-semibold text-lg mb-1 text-white">מקבלים שיחה</h3>
                   <p className="text-blue-200 text-sm">עורך דין חוזר אליך לשיחת ייעוץ ראשונית</p>
                 </div>
               </div>
@@ -90,7 +90,7 @@ export function Contact({ selectedService }: { selectedService?: string }) {
                   <span className="font-bold text-xl">3</span>
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-semibold text-lg mb-1 text-white">יוצאים לדרך</h4>
+                  <h3 className="font-semibold text-lg mb-1 text-white">יוצאים לדרך</h3>
                   <p className="text-blue-200 text-sm">מתחילים בטיפול בתיק עד לסגירתו</p>
                 </div>
               </div>
