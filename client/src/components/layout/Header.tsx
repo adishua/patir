@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link as ScrollLink } from "react-scroll";
 import { useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,32 +16,16 @@ function NavLink({ to, children, className, onClick }: { to: string; children: R
   const [location, setLocation] = useLocation();
   const isHome = location === "/";
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (isHome) {
+      e.preventDefault();
       const element = document.getElementById(to);
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-    } else {
-      setLocation(`/#${to}`);
     }
     onClick?.();
   };
-
-  if (isHome) {
-    return (
-      <ScrollLink
-        to={to}
-        smooth={true}
-        duration={500}
-        offset={-80}
-        className={className}
-        onClick={onClick}
-      >
-        {children}
-      </ScrollLink>
-    );
-  }
 
   return (
     <a href={`/#${to}`} className={className} onClick={handleClick}>

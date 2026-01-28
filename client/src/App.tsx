@@ -16,7 +16,19 @@ function ScrollToTop() {
   const [location] = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Check for hash in the URL
+    const hash = window.location.hash;
+    if (hash) {
+      // Small delay to ensure DOM is ready after route change
+      setTimeout(() => {
+        const element = document.getElementById(hash.slice(1));
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 0);
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, [location]);
 
   return null;
