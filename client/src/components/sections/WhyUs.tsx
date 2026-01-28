@@ -52,7 +52,7 @@ export function WhyUs() {
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
                 <benefit.icon className="w-6 h-6" />
               </div>
-              <h4 className="font-bold text-lg mb-2">{benefit.title}</h4>
+              <h3 className="font-bold text-lg mb-2">{benefit.title}</h3>
               <p className="text-sm text-gray-500 leading-relaxed">{benefit.description}</p>
             </div>
           ))}

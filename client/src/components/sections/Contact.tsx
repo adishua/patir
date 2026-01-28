@@ -195,6 +195,7 @@ export function Contact({ selectedService }: { selectedService?: string }) {
                     type="text"
                     tabIndex={-1}
                     autoComplete="off"
+                    aria-hidden="true"
                     style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px' }}
                     {...form.register("company")}
                   />
