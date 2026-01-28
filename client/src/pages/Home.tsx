@@ -1,16 +1,14 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
+import { Services } from "@/components/sections/Services";
+import { HowItWorks } from "@/components/sections/HowItWorks";
+import { WhyUs } from "@/components/sections/WhyUs";
+import { About } from "@/components/sections/About";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { Contact } from "@/components/sections/Contact";
 import { ServiceTitle } from "@/data/services";
-import { useState, useEffect, lazy, Suspense } from "react";
-
-// Lazy-load below-fold sections
-const Services = lazy(() => import("@/components/sections/Services"));
-const HowItWorks = lazy(() => import("@/components/sections/HowItWorks"));
-const WhyUs = lazy(() => import("@/components/sections/WhyUs"));
-const About = lazy(() => import("@/components/sections/About"));
-const Testimonials = lazy(() => import("@/components/sections/Testimonials"));
-const Contact = lazy(() => import("@/components/sections/Contact"));
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [selectedService, setSelectedService] = useState<string>();
@@ -43,24 +41,12 @@ export default function Home() {
 
       <main className="flex-grow">
         <Hero />
-        <Suspense fallback={<div className="min-h-[400px]" />}>
-          <Services onSelectService={setSelectedService} />
-        </Suspense>
-        <Suspense fallback={<div className="min-h-[400px]" />}>
-          <HowItWorks />
-        </Suspense>
-        <Suspense fallback={<div className="min-h-[400px]" />}>
-          <WhyUs />
-        </Suspense>
-        <Suspense fallback={<div className="min-h-[400px]" />}>
-          <About />
-        </Suspense>
-        <Suspense fallback={<div className="min-h-[400px]" />}>
-          <Testimonials />
-        </Suspense>
-        <Suspense fallback={<div className="min-h-[600px]" />}>
-          <Contact selectedService={selectedService} />
-        </Suspense>
+        <Services onSelectService={setSelectedService} />
+        <HowItWorks />
+        <WhyUs />
+        <About />
+        <Testimonials />
+        <Contact selectedService={selectedService} />
       </main>
 
       <Footer />

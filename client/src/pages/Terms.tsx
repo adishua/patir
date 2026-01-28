@@ -1,6 +1,5 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { motion } from "framer-motion";
 
 export default function Terms() {
   return (
@@ -9,11 +8,7 @@ export default function Terms() {
 
       <main className="flex-grow pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div className="reveal-up">
             <h1 className="text-4xl font-bold mb-8 text-primary">תנאי שימוש</h1>
 
             <div className="prose prose-blue max-w-none text-gray-700 space-y-6 text-lg leading-relaxed">
@@ -89,7 +84,7 @@ export default function Terms() {
                 תאריך עדכון אחרון: {new Date().toLocaleDateString('he-IL')}
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </main>
 

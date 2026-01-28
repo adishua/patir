@@ -11,7 +11,7 @@ import {
   Gavel,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { useInView } from "@/hooks/use-in-view";
 
 // Map icon strings from DB to Lucide components
 const iconMap: Record<string, any> = {
@@ -51,18 +51,32 @@ export function Services({
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services?.map((service, index) => {
+          {services?.map((service) => {
             const Icon = iconMap[service.icon] || Gavel;
 
             return (
-              <motion.div
+              <ServiceCard
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300"
-              >
+                service={service}
+                Icon={Icon}
+                onSelectService={onSelectService}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ServiceCard({ service, Icon, onSelectService }: { service: any; Icon: any; onSelectService?: (title: string) => void }) {
+  const { ref, isInView } = useInView();
+
+  return (
+    <div
+      ref={ref}
+      className={`reveal group p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300 ${isInView ? 'in-view' : ''}`}
+    >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                     <Icon className="w-6 h-6" />
@@ -79,27 +93,22 @@ export function Services({
                     {service.description}
                   </p>
                 </div>
-                <a
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onSelectService?.(service.title);
-                    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }}
-                >
-                  <Button
-                    variant="link"
-                    className="p-0 h-auto font-semibold text-secondary hover:text-primary transition-colors group-hover:translate-x-1 duration-300"
-                  >
-                    לבחירה <ArrowLeft className="w-4 h-4 mr-2" />
-                  </Button>
-                </a>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
+      <a
+        href="#contact"
+        onClick={(e) => {
+          e.preventDefault();
+          onSelectService?.(service.title);
+          document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
+      >
+        <Button
+          variant="link"
+          className="p-0 h-auto font-semibold text-secondary hover:text-primary transition-colors group-hover:translate-x-1 duration-300"
+        >
+          לבחירה <ArrowLeft className="w-4 h-4 mr-2" />
+        </Button>
+      </a>
+    </div>
   );
 }
 

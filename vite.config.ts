@@ -38,8 +38,6 @@ export default defineConfig({
           ],
           // Vendor chunk for routing and forms
           'vendor-utils': ['wouter', '@tanstack/react-query', 'zod'],
-          // Vendor chunk for animations
-          'vendor-animation': ['framer-motion'],
         },
       },
     },
