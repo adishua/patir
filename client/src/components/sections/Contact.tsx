@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useCreateInquiry, type InquiryData } from "@/hooks/use-inquiry";
 import { useServices } from "@/hooks/use-content";
 import { ServiceTitle } from "@/data/services";
@@ -10,24 +9,13 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, Send } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { z } from "zod";
 import { useEffect } from "react";
-
-const inquirySchema = z.object({
-  name: z.string().min(1, "שם מלא הוא שדה חובה"),
-  phone: z.string().min(1, "טלפון נייד הוא שדה חובה"),
-  email: z.string().email("כתובת אימייל לא תקינה").optional().or(z.literal("")),
-  message: z.string().min(1, "הודעה היא שדה חובה"),
-  service: z.string().min(1, "יש לבחור שירות"),
-  company: z.string().optional(),
-});
 
 export function Contact({ selectedService }: { selectedService?: string }) {
   const mutation = useCreateInquiry();
   const { data: services } = useServices();
 
   const form = useForm<InquiryData>({
-    resolver: zodResolver(inquirySchema),
     defaultValues: {
       name: "",
       phone: "",
@@ -106,6 +94,7 @@ export function Contact({ selectedService }: { selectedService?: string }) {
                   <FormField
                     control={form.control}
                     name="name"
+                    rules={{ required: "שם מלא הוא שדה חובה" }}
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>שם מלא</FormLabel>
@@ -121,6 +110,7 @@ export function Contact({ selectedService }: { selectedService?: string }) {
                     <FormField
                       control={form.control}
                       name="phone"
+                      rules={{ required: "טלפון נייד הוא שדה חובה" }}
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>טלפון נייד</FormLabel>
@@ -135,6 +125,12 @@ export function Contact({ selectedService }: { selectedService?: string }) {
                     <FormField
                       control={form.control}
                       name="email"
+                      rules={{
+                        pattern: {
+                          value: /^$|^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                          message: "כתובת אימייל לא תקינה"
+                        }
+                      }}
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>אימייל (אופציונלי)</FormLabel>
@@ -150,6 +146,7 @@ export function Contact({ selectedService }: { selectedService?: string }) {
                   <FormField
                     control={form.control}
                     name="service"
+                    rules={{ required: "יש לבחור שירות" }}
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>השירות המבוקש</FormLabel>
@@ -176,14 +173,15 @@ export function Contact({ selectedService }: { selectedService?: string }) {
                   <FormField
                     control={form.control}
                     name="message"
+                    rules={{ required: "הודעה היא שדה חובה" }}
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>הודעה</FormLabel>
                         <FormControl>
-                          <Textarea 
-                            placeholder="תאר בקצרה את המקרה..." 
-                            className="min-h-[100px] bg-gray-50 border-gray-200 focus:bg-white transition-colors resize-none" 
-                            {...field} 
+                          <Textarea
+                            placeholder="תאר בקצרה את המקרה..."
+                            className="min-h-[100px] bg-gray-50 border-gray-200 focus:bg-white transition-colors resize-none"
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />

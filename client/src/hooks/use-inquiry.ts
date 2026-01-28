@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { config } from "@/data/config";
 
@@ -13,13 +13,17 @@ export interface InquiryData {
 
 export function useCreateInquiry() {
   const { toast } = useToast();
+  const [isPending, setIsPending] = useState(false);
 
-  return useMutation({
-    mutationFn: async (data: InquiryData) => {
-      if (data.company) {
-        return { success: true };
-      }
+  const mutate = async (data: InquiryData, options?: { onSuccess?: () => void }) => {
+    // Honeypot check
+    if (data.company) {
+      options?.onSuccess?.();
+      return;
+    }
 
+    setIsPending(true);
+    try {
       const payload = {
         name: data.name,
         phone: data.phone,
@@ -34,26 +38,25 @@ export function useCreateInquiry() {
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) {
-        throw new Error("Failed to submit inquiry");
-      }
+      if (!res.ok) throw new Error("Failed to submit inquiry");
 
-      return res.json();
-    },
-    onSuccess: () => {
       toast({
         title: "הפנייה נשלחה בהצלחה!",
         description: "נציג מטעמנו יחזור אליך בהקדם.",
         variant: "default",
         className: "bg-green-50 border-green-200 text-green-900",
       });
-    },
-    onError: (error) => {
+      options?.onSuccess?.();
+    } catch (error) {
       toast({
         title: "שגיאה בשליחת הפנייה",
-        description: error.message,
+        description: error instanceof Error ? error.message : "אנא נסה שנית",
         variant: "destructive",
       });
-    },
-  });
+    } finally {
+      setIsPending(false);
+    }
+  };
+
+  return { mutate, isPending };
 }

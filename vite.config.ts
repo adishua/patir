@@ -38,8 +38,8 @@ export default defineConfig({
             '@radix-ui/react-slot',
             '@radix-ui/react-toast',
           ],
-          // Vendor chunk for routing and forms
-          'vendor-utils': ['wouter', '@tanstack/react-query', 'zod'],
+          // Vendor chunk for routing
+          'vendor-utils': ['wouter'],
         },
       },
     },
