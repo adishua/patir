@@ -228,3 +228,5 @@ export function Contact({ selectedService }: { selectedService?: string }) {
     </section>
   );
 }
+
+export default Contact;

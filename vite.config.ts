@@ -19,6 +19,7 @@ export default defineConfig({
   root: path.resolve(__dirname, "client"),
   envDir: path.resolve(__dirname), // Load .env from project root
   build: {
+    target: 'es2020',
     outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
     cssCodeSplit: true,
@@ -37,6 +38,8 @@ export default defineConfig({
           ],
           // Vendor chunk for routing and forms
           'vendor-utils': ['wouter', '@tanstack/react-query', 'zod'],
+          // Vendor chunk for animations
+          'vendor-animation': ['framer-motion'],
         },
       },
     },
