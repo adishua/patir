@@ -61,9 +61,6 @@ Headers include:
 | Check | Status | Notes |
 |-------|--------|-------|
 | Honeypot field | ✅ Done | Hidden field traps bots |
-| n8n validation | ⏳ | Verify phone/email format in workflow |
-| Rate limiting | ⏳ | Consider Cloudflare rate limit rule |
-| CORS configured | ⏳ Verify | n8n allows only patir.net origin |
 
 ## 4. Privacy & Legal
 
@@ -88,6 +85,31 @@ Headers include:
 | Code in GitHub | ⏳ Verify | Source control |
 | Cloudflare Pages auto-deploy | ✅ | Deploys from git |
 | n8n workflow export | ⏳ | Backup workflow JSON |
+
+## 7. n8n Security ✅ Complete
+
+### CORS Configuration (n8n Cloud)
+
+**Important:** A critical n8n vulnerability (CVE-2026-21858) was disclosed in January 2026. Ensure n8n is updated to the latest version before configuring.
+
+#### How to Configure CORS in n8n Cloud:
+
+1. Open your workflow in n8n Cloud
+2. Click on the **Webhook node** that receives form submissions
+3. Scroll down to the **Options** section
+4. Find the **"Allowed Origins (CORS)"** field
+5. Enter the following allowed origins:
+   ```
+   https://patir.net, https://www.patir.net
+   ```
+6. **Save** the workflow
+7. **Activate** the workflow (toggle the Active switch)
+
+This configuration ensures the webhook only accepts requests from patir.net domains, preventing unauthorized form submissions from other websites.
+
+#### Verification:
+- Test form submission from https://patir.net ✅ Should work
+- Test direct POST to webhook URL from browser console ❌ Should be blocked
 
 ---
 
@@ -181,7 +203,7 @@ All settings verified via Cloudflare API:
 ✅ Created `client/public/_headers` file with security headers
 
 ## Step 3: Verify n8n Security (5 min)
-- Check CORS only allows patir.net
+- ✅ CORS configured to only allow patir.net (see Part 1, Section 7)
 - Verify form validation in workflow
 
 ## Step 4: Google Search Console (10 min)
@@ -209,11 +231,66 @@ All settings verified via Cloudflare API:
 After deployment, verify:
 - [x] Security headers visible in browser DevTools (Network → Response Headers)
 - [x] Site loads with HTTPS only
-- [ ] Form submission works
+- [x] Form submission works
 - [ ] Sitemap visible at /sitemap.xml
 - [ ] Google Search Console shows pages indexed
 - [x] Cloudflare security settings configured
-- [ ] n8n CORS properly restricted
+
+---
+
+# PART 3: Future Tasks
+
+## n8n Security Enhancements
+
+### 1. Server-Side Form Validation
+Add validation in the n8n workflow to verify:
+- Phone number format (Israeli format: 05X-XXXXXXX)
+- Email format validation
+- Required field checks
+- Input length limits
+
+**Implementation:** Add "IF" nodes in n8n workflow before processing the form data.
+
+### 2. Rate Limiting Options
+
+n8n Cloud does not have built-in webhook rate limiting. Here are recommended approaches:
+
+#### Option 1: Cloudflare Rate Limiting (Recommended)
+
+Configure rate limiting rules in Cloudflare to protect the n8n webhook:
+
+1. Go to **Cloudflare Dashboard** → **Security** → **WAF** → **Rate limiting rules**
+2. Click **Create rule**
+3. Configure:
+   - **Rule name:** "n8n webhook protection"
+   - **If incoming requests match:**
+     - Field: `URI Path`
+     - Operator: `contains`
+     - Value: Your n8n webhook path (e.g., `/webhook/`)
+   - **Then take action:**
+     - Action: `Block`
+     - **When rate exceeds:**
+       - Requests: `10`
+       - Period: `1 minute`
+       - **Counting:**
+         - Count requests per: `IP Address`
+4. **Deploy**
+
+**Recommended threshold:** 10 requests per minute per IP address (allows legitimate retries while blocking spam/bots)
+
+#### Option 2: Redis-based Rate Limiting (Advanced)
+
+For more granular control, use Upstash Redis:
+
+1. Sign up for [Upstash](https://upstash.com/) free tier
+2. Create a Redis database
+3. In your n8n workflow, add nodes before form processing:
+   - **HTTP Request** node to Upstash REST API
+   - Check request count for IP address
+   - Increment counter with expiry
+   - Reject if threshold exceeded
+
+**Note:** This requires additional n8n workflow complexity and is only recommended if Cloudflare rate limiting is insufficient.
 
 ---
 
