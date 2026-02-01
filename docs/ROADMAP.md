@@ -76,7 +76,7 @@ Headers include:
 |------|---------|--------|
 | Cloudflare Analytics | Traffic, threats, performance | ✅ Built-in |
 | Google Analytics | User behavior, conversions | ✅ GTM configured |
-| Uptime monitoring | Alert if site goes down | ⏳ Optional |
+| Uptime monitoring | Alert if site goes down | ✅ Done |
 
 ## 6. Backup & Recovery
 
