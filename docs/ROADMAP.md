@@ -82,34 +82,9 @@ Headers include:
 
 | Item | Status | Notes |
 |------|--------|-------|
-| Code in GitHub | ⏳ Verify | Source control |
-| Cloudflare Pages auto-deploy | ✅ | Deploys from git |
-| n8n workflow export | ⏳ | Backup workflow JSON |
-
-## 7. n8n Security ✅ Complete
-
-### CORS Configuration (n8n Cloud)
-
-**Important:** A critical n8n vulnerability (CVE-2026-21858) was disclosed in January 2026. Ensure n8n is updated to the latest version before configuring.
-
-#### How to Configure CORS in n8n Cloud:
-
-1. Open your workflow in n8n Cloud
-2. Click on the **Webhook node** that receives form submissions
-3. Scroll down to the **Options** section
-4. Find the **"Allowed Origins (CORS)"** field
-5. Enter the following allowed origins:
-   ```
-   https://patir.net, https://www.patir.net
-   ```
-6. **Save** the workflow
-7. **Activate** the workflow (toggle the Active switch)
-
-This configuration ensures the webhook only accepts requests from patir.net domains, preventing unauthorized form submissions from other websites.
-
-#### Verification:
-- Test form submission from https://patir.net ✅ Should work
-- Test direct POST to webhook URL from browser console ❌ Should be blocked
+| Code in GitHub | ✅ Done | Triggers Cloudflare Pages deployment |
+| Cloudflare Pages auto-deploy | ✅ Done | Auto-deploys on git push |
+| n8n workflow export | ✅ Done | Saved in `docs/n8n/` (without credentials) |
 
 ---
 
@@ -203,7 +178,7 @@ All settings verified via Cloudflare API:
 ✅ Created `client/public/_headers` file with security headers
 
 ## Step 3: Verify n8n Security (5 min)
-- ✅ CORS configured to only allow patir.net (see Part 1, Section 7)
+- Check CORS allows only patir.net
 - Verify form validation in workflow
 
 ## Step 4: Google Search Console (10 min)

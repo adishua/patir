@@ -1,0 +1,334 @@
+{
+  "name": "website-api",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "contact",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "http://localhost:5173,https://patir.net,https://www.patir.net"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b8e746e5-d158-46af-b960-33a19f49cb1d",
+      "name": "Webhook",
+      "webhookId": "532aae1e-a6d6-45ba-a269-71e5f95aab33"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\"success\": true, \"message\": \"Inquiry received\"}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Access-Control-Allow-Methods",
+                "value": "POST, OPTIONS"
+              },
+              {
+                "name": "Access-Control-Allow-Headers",
+                "value": "Content-Type"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        352,
+        336
+      ],
+      "id": "119e4b22-9974-49b6-b46a-b3817e86b3ab",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "19SnC2pV64KrKqMQLkpRU8l0spKUxW16qhLP6DQioEzI",
+          "mode": "list",
+          "cachedResultName": "leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19SnC2pV64KrKqMQLkpRU8l0spKUxW16qhLP6DQioEzI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 952325734,
+          "mode": "list",
+          "cachedResultName": "leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19SnC2pV64KrKqMQLkpRU8l0spKUxW16qhLP6DQioEzI/edit#gid=952325734"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "זמן": "={{ $now }}",
+            "שם": "={{ $json.body.name }}",
+            "טלפון": "={{ $json.body.phone }}",
+            "אימייל": "={{ $json.body.email }}",
+            "הודעה": "={{ $json.body.message }}",
+            "סוג שירות": "={{ $json.body.service }}",
+            "סטטוס": "New",
+            "הערות": "=origin - {{ $json.headers.origin }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "זמן",
+              "displayName": "זמן",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "שם",
+              "displayName": "שם",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "טלפון",
+              "displayName": "טלפון",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "אימייל",
+              "displayName": "אימייל",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "הודעה",
+              "displayName": "הודעה",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "סוג שירות",
+              "displayName": "סוג שירות",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "סטטוס",
+              "displayName": "סטטוס",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "הערות",
+              "displayName": "הערות",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        352,
+        96
+      ],
+      "id": "0682e0e9-9a81-4a05-8358-d6ffbf2142fb",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "dROupPjPkirs5Vts",
+          "name": "Google Sheets account 4"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "info@patir.net",
+        "subject": "התקבלה פנייה חדשה",
+        "message": "=התקבלה פנייה חדשה:\n\n{{ $json.body.name }}\n\n{{ $json.body.phone }}\n\n{{ $json.body.email }}\n\n{{ $json.body.message }}\n\n{{ $json.body.serviceId }} - שירות ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        352,
+        -336
+      ],
+      "id": "7e3b3eb7-9352-48a6-815a-057cbc90d36c",
+      "name": "send a message to info@patir",
+      "webhookId": "96014cf8-7c01-4be8-acb2-4974845be480",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "TLVl2kbVhv6okiEi",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.body.email }}",
+        "subject": "פנייתך התקבלה בהצלחה",
+        "message": "=שלום {{ $json.body.name }},\n</br>\nקיבלנו את פנייתך ונחזור אליך בקרוב\n</br>\nבברכה,\n</br>\nצוות פתיר",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        752,
+        -96
+      ],
+      "id": "2e0f4a51-bfcc-463d-98e2-661f405a4702",
+      "name": "Send a receive message to lead email",
+      "webhookId": "f606d4b8-0aef-43c1-8410-2e8311eae6c7",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "TLVl2kbVhv6okiEi",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "cea07573-f1cd-4757-aaa0-ff8e91a4e4df",
+              "leftValue": "={{ $json.body.email }}",
+              "rightValue": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        352,
+        -80
+      ],
+      "id": "46f22034-49b6-46e6-be0b-eb23aa7fd17d",
+      "name": "if is valid email"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "send a message to info@patir",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "if is valid email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        []
+      ]
+    },
+    "send a message to info@patir": {
+      "main": [
+        []
+      ]
+    },
+    "Send a receive message to lead email": {
+      "main": [
+        []
+      ]
+    },
+    "if is valid email": {
+      "main": [
+        [
+          {
+            "node": "Send a receive message to lead email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "0df04d2a-f720-441a-8631-284ce85658fd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ba1f69df87a718283a4a79cd9951b58bcb10056c81b5c7d2ddfe9c30e7ffc86c"
+  },
+  "id": "xykIB71rkjvSSfOb9kq9J",
+  "tags": []
+}
