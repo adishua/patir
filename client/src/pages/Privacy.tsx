@@ -59,6 +59,28 @@ export default function Privacy() {
               </section>
 
               <section>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">עוגיות וניתוח שימוש</h2>
+                <p>
+                  אתר זה משתמש בשירות Google Analytics לצורך ניתוח סטטיסטי של השימוש באתר.
+                  שירות זה אוסף מידע אנונימי על דפוסי הגלישה באתר באמצעות עוגיות (Cookies).
+                </p>
+                <p className="mt-4">המידע הנאסף כולל:</p>
+                <ul className="list-disc list-inside space-y-2 mt-4">
+                  <li>מספר מבקרים באתר</li>
+                  <li>דפים נצפים</li>
+                  <li>משך הביקור</li>
+                  <li>מקור ההפניה לאתר</li>
+                </ul>
+                <p className="mt-4">
+                  מידע זה משמש אותנו לשיפור האתר ואינו מזהה אותך באופן אישי.
+                  תוכל לבטל את איסוף המידע באמצעות הגדרות הדפדפן שלך או התקנת{" "}
+                  <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+                    תוסף חסימת Google Analytics
+                  </a>.
+                </p>
+              </section>
+
+              <section>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">שמירת מידע</h2>
                 <p>
                   אנו שומרים את המידע שלך למשך הזמן הנדרש לצורך מתן השירות ובהתאם לדרישות החוק.

@@ -66,9 +66,9 @@ Headers include:
 
 | Item | Status | Notes |
 |------|--------|-------|
-| Privacy Policy page | ✅ Done | `/Privacy.tsx` exists |
+| Privacy Policy page | ✅ Done | `/Privacy.tsx` exists with analytics disclosure |
 | Terms of Service | ✅ Done | `/Terms.tsx` exists |
-| Cookie consent banner | ⏳ Check | If using analytics cookies (GTM) |
+| Cookie consent banner | ✅ Not required | GA4 disclosed in Privacy Policy (Israel audience) |
 
 ## 5. Monitoring & Alerts
 
