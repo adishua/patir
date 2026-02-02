@@ -1,0 +1,33 @@
+#,Task,Est.,Priority,Phase,Status
+1,Verify n8n CORS allows only patir.net,5 min,Medium,Part 1 - Security,Pending
+2,Verify form validation in n8n workflow,10 min,Medium,Part 1 - Security,Pending
+3,Verify sitemap visible at /sitemap.xml,5 min,Low,Part 1 - Verification,Pending
+4,Google Search Console shows pages indexed,5 min,High,Part 1 - Verification,Pending
+5,Submit sitemap to Google Search Console,15 min,High,Phase 1 - Technical SEO,Pending
+6,Submit sitemap to Bing Webmaster Tools,10 min,Medium,Phase 1 - Technical SEO,Pending
+7,Verify structured data (Schema.org),10 min,High,Phase 1 - Technical SEO,Pending
+8,Add LocalBusiness schema markup,30 min,High,Phase 1 - Technical SEO,Pending
+9,Add FAQ schema for services,30 min,Medium,Phase 1 - Technical SEO,Pending
+10,Verify robots.txt,5 min,Low,Phase 1 - Technical SEO,Pending
+11,Create blog section for legal articles,2 hrs,High,Phase 1 - Content Strategy,Pending
+12,Write 3-5 pillar content pages (service deep-dives),8 hrs,High,Phase 1 - Content Strategy,Pending
+13,Add FAQ section with common questions,2 hrs,Medium,Phase 1 - Content Strategy,Pending
+14,Hebrew keyword research (legal terms),1 hr,High,Phase 1 - Content Strategy,Pending
+15,Create Google Business Profile,20 min,High,Phase 1 - Local SEO,Pending
+16,Add to Israeli business directories,1 hr,Medium,Phase 1 - Local SEO,Pending
+17,Collect and display reviews/testimonials,2 hrs,High,Phase 1 - Local SEO,Pending
+18,Pillar Page: Complete guide to case closure,4 hrs,High,Phase 2 - Content Calendar,Pending
+19,Blog Post: 5 reasons to delete criminal record,2 hrs,High,Phase 2 - Content Calendar,Pending
+20,FAQ Page: Common questions answered,2 hrs,Medium,Phase 2 - Content Calendar,Pending
+21,Case Study: Success story (anonymized),2 hrs,Medium,Phase 2 - Content Calendar,Pending
+22,Set up Google Ads account,30 min,Medium,Phase 3 - Google Ads,Pending
+23,Create Search Ads campaign (Hebrew keywords),2 hrs,Medium,Phase 3 - Google Ads,Pending
+24,Create Display Remarketing campaign,1 hr,Low,Phase 3 - Google Ads,Pending
+25,Set up Facebook/Instagram Ads,1 hr,Low,Phase 3 - Social Ads,Pending
+26,Add more testimonials/reviews,1 hr,High,Phase 4 - Trust,Pending
+27,Add lawyer credentials/certifications,30 min,High,Phase 4 - Authority,Pending
+28,Add case success statistics,30 min,Medium,Phase 4 - Social Proof,Pending
+29,Add WhatsApp contact option,20 min,Medium,Phase 4 - Conversion,Pending
+30,Accessibility improvements (96→100),1 hr,Low,Phase 4 - Compliance,Pending
+31,Add server-side form validation in n8n,1 hr,Medium,Part 3 - n8n Security,Pending
+32,Configure Cloudflare rate limiting for webhook,15 min,Medium,Part 3 - n8n Security,Pending
