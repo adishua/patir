@@ -47,7 +47,7 @@ export function Contact({ selectedService }: { selectedService?: string }) {
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           
           <div className="text-white">
             <p className="text-blue-100 text-lg mb-8 leading-relaxed max-w-lg">
