@@ -1,4 +1,0 @@
-# www to non-www redirect is handled by Cloudflare DNS/Page Rules
-# See: Cloudflare Dashboard → Rules → Redirect Rules
-
-/* /index.html 200
