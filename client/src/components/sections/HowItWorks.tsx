@@ -25,9 +25,9 @@ function StepCard({ step }: { step: typeof steps[0] }) {
   return (
     <div
       ref={ref}
-      className={`reveal relative bg-white pt-8 pb-6 px-6 text-center group ${isInView ? 'in-view' : ''}`}
+      className={`reveal relative bg-white pt-8 pb-6 px-6 text-center ${isInView ? 'in-view' : ''}`}
     >
-      <div className="w-24 h-24 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border-4 border-white shadow-lg">
+      <div className="w-24 h-24 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-6 border-4 border-white shadow-lg">
         <step.icon className="w-10 h-10 text-primary" />
       </div>
       <h3 className="text-xl font-bold mb-3">{step.title}</h3>
