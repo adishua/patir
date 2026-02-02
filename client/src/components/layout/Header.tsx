@@ -74,7 +74,10 @@ export function Header({ onContactClick }: { onContactClick?: () => void }) {
               <NavLink
                 key={item.name}
                 to={item.to}
-                className="text-base font-medium text-gray-600 hover:text-primary transition-colors cursor-pointer"
+                className={cn(
+                  "text-base font-medium transition-colors cursor-pointer",
+                  scrolled ? "text-gray-600 hover:text-primary" : "text-white hover:text-white/80"
+                )}
               >
                 {item.name}
               </NavLink>
@@ -93,7 +96,10 @@ export function Header({ onContactClick }: { onContactClick?: () => void }) {
 
             <button
               aria-label={isOpen ? "סגור תפריט" : "פתח תפריט"}
-              className="md:hidden p-2 text-gray-600 hover:text-primary transition-colors"
+              className={cn(
+                "md:hidden p-2 transition-colors",
+                scrolled ? "text-gray-600 hover:text-primary" : "text-white hover:text-white/80"
+              )}
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
