@@ -75,39 +75,41 @@ function ServiceCard({ service, Icon, onSelectService }: { service: any; Icon: a
   return (
     <div
       ref={ref}
-      className={`reveal group p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300 ${isInView ? 'in-view' : ''}`}
+      className={`reveal group p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300 flex flex-col ${isInView ? 'in-view' : ''}`}
     >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
-                    {service.title}
-                  </h3>
-                </div>
-                <div className="space-y-3 mb-6">
-                  <p className="text-sm font-semibold text-secondary leading-relaxed">
-                    {service.longDescription}
-                  </p>
-                  <p className="text-gray-500 leading-relaxed text-sm">
-                    {service.description}
-                  </p>
-                </div>
-      <a
-        href="#contact"
-        onClick={(e) => {
-          e.preventDefault();
-          onSelectService?.(service.title);
-          document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
-        }}
-      >
-        <Button
-          variant="link"
-          className="p-0 h-auto font-semibold text-secondary hover:text-primary transition-colors group-hover:translate-x-1 duration-300"
+      <div className="flex items-center gap-4 mb-4">
+        <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+          <Icon className="w-6 h-6" />
+        </div>
+        <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
+          {service.title}
+        </h3>
+      </div>
+      <div className="space-y-3 mb-6 flex-grow">
+        <p className="text-sm font-semibold text-secondary leading-relaxed">
+          {service.longDescription}
+        </p>
+        <p className="text-gray-500 leading-relaxed text-sm">
+          {service.description}
+        </p>
+      </div>
+      <div className="flex justify-end">
+        <a
+          href="#contact"
+          onClick={(e) => {
+            e.preventDefault();
+            onSelectService?.(service.title);
+            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }}
         >
-          לבחירה <ArrowLeft className="w-4 h-4 mr-2" />
-        </Button>
-      </a>
+          <Button
+            variant="link"
+            className="p-0 h-auto font-semibold text-secondary hover:text-primary transition-colors group-hover:translate-x-1 duration-300"
+          >
+            המשך <ArrowLeft className="w-4 h-4 mr-2" />
+          </Button>
+        </a>
+      </div>
     </div>
   );
 }
