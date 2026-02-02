@@ -77,16 +77,9 @@
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
 
-    <!-- Critical resource preloads - All used weights (400, 500, 600, 700) for Hebrew (primary) -->
+    <!-- Critical font preloads - only most used weights (400, 700) to avoid hurting LCP -->
     <link rel="preload" href="/fonts/assistant-400-hebrew.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/assistant-500-hebrew.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/assistant-600-hebrew.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/assistant-700-hebrew.woff2" as="font" type="font/woff2" crossorigin>
-    <!-- Latin font preloads (for fallback Latin characters) -->
-    <link rel="preload" href="/fonts/assistant-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/assistant-500-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/assistant-600-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/assistant-700-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Critical font-face declarations (must be inline to match preloads) -->
     <style>
@@ -105,6 +98,22 @@
         font-weight: 400;
         font-display: swap;
         src: url('/fonts/assistant-400-hebrew.woff2') format('woff2');
+        unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+      }
+      @font-face {
+        font-family: 'Assistant';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url('/fonts/assistant-500-hebrew.woff2') format('woff2');
+        unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+      }
+      @font-face {
+        font-family: 'Assistant';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('/fonts/assistant-600-hebrew.woff2') format('woff2');
         unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
       }
       @font-face {
