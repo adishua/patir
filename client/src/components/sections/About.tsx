@@ -1,5 +1,3 @@
-import barakImage from "@assets/barak.jpeg";
-
 export function About() {
   return (
     <section id="about" className="py-24 bg-muted relative overflow-hidden">
@@ -47,7 +45,7 @@ export function About() {
             <div className="relative md:w-72 flex-shrink-0">
               <div className="h-full rounded-xl overflow-hidden bg-gray-100 shadow-md">
                 <img
-                  src={barakImage}
+                  src="/images/barak.webp"
                   alt="עו״ד ברק כהן"
                   className="w-full h-full object-cover"
                 />

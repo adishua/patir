@@ -1,6 +1,5 @@
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@assets/barak.jpeg";
 
 export function Hero() {
   return (
@@ -9,7 +8,7 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <div className="absolute left-0 top-0 w-full lg:w-[65%] h-full">
           <img
-            src={heroImage}
+            src="/images/barak.webp"
             alt="Legal Services"
             className="w-full h-full object-cover object-top opacity-15 blur-sm"
           />

@@ -81,6 +81,9 @@
     <link rel="preload" href="/fonts/assistant-400-hebrew.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/assistant-700-hebrew.woff2" as="font" type="font/woff2" crossorigin>
 
+    <!-- Preload hero image for better LCP -->
+    <link rel="preload" as="image" href="/images/barak.webp" type="image/webp" fetchpriority="high" />
+
     <!-- Critical font-face declarations (must be inline to match preloads) -->
     <style>
       /* Fallback font with metrics matching Assistant */
