@@ -1,8 +1,29 @@
+# Dependencies
 node_modules
+
+# Next.js
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+
+# Vite (legacy)
 dist
-.DS_Store
-server/public
-vite.config.ts.*
-*.tar.gz
+
+# Environment variables
 .env
+.env.local
+.env.production.local
+.env.development.local
+
+# Misc
+.DS_Store
+*.tar.gz
 backup_*.sql
+
+# Old files (to be removed)
+client
+server
+shared
+vite.config.ts.*
+*.backup

@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Color Palette - Legal/Professional Blue Theme */
+  /* Primary Dark Blue: #1F3C88 -> 224 63% 33% */
+  --primary: 224 63% 33%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Secondary Light Blue: #60A3D9 -> 207 63% 61% */
+  --secondary: 207 63% 61%;
+  --secondary-foreground: 0 0% 100%;
+
+  /* Backgrounds */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 11%; /* #1C1C1C */
+
+  /* Light Gray Section BG: #F6F9FC -> 210 33% 98% */
+  --muted: 210 33% 98%;
+  --muted-foreground: 215 20% 40%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 224 63% 33%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 224 63% 33%;
+
+  --accent: 210 33% 98%;
+  --accent-foreground: 224 63% 33%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 224 63% 33%;
+
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    direction: rtl; /* MANDATORY RTL */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-primary;
+  }
+}
+
+/* Smooth reveal animation classes */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero animations */
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-image-reveal {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: heroImageReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+@keyframes heroImageReveal {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scroll-reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.reveal-scale.in-view {
+  opacity: 1;
+  transform: scale(1);
+}
