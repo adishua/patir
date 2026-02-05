@@ -53,6 +53,7 @@ export function Header({ onContactClick }: { onContactClick?: () => void }) {
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
   const isHome = pathname === '/'
+  const hasDarkBackground = isHome && !scrolled
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,7 +91,7 @@ export function Header({ onContactClick }: { onContactClick?: () => void }) {
                 to={item.to}
                 className={cn(
                   'text-base font-medium transition-colors cursor-pointer',
-                  scrolled ? 'text-gray-600 hover:text-primary' : 'text-white hover:text-white/80'
+                  hasDarkBackground ? 'text-white hover:text-white/80' : 'text-gray-600 hover:text-primary'
                 )}
               >
                 {item.name}
@@ -110,7 +111,7 @@ export function Header({ onContactClick }: { onContactClick?: () => void }) {
               aria-label={isOpen ? 'סגור תפריט' : 'פתח תפריט'}
               className={cn(
                 'md:hidden p-2 transition-colors',
-                scrolled ? 'text-gray-600 hover:text-primary' : 'text-white hover:text-white/80'
+                hasDarkBackground ? 'text-white hover:text-white/80' : 'text-gray-600 hover:text-primary'
               )}
               onClick={() => setIsOpen(!isOpen)}
             >
